@@ -32,8 +32,7 @@ public class AddressControllers {
             return ResponseEntity.badRequest().body(violacoesToMap);
         }
 
-        Address address = addressDTO.mapToAddress();
-        addressService.saveAddress(address);
+        addressService.saveAddress(addressDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body("Endereço cadastrado com sucesso!");
     }
 }

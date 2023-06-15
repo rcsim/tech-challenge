@@ -14,7 +14,9 @@ public class AddressService {
     @Autowired
     private AddressRepository addressRepository;
 
-    public Address saveAddress(Address address) {
-        return addressRepository.save(address);
+    public AddressDTO saveAddress(AddressDTO addressDTO) {
+        Address address = addressDTO.mapToAddress();
+        addressRepository.save(address);
+        return addressDTO;
     }
 }
