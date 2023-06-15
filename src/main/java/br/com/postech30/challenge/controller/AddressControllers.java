@@ -1,7 +1,6 @@
 package br.com.postech30.challenge.controller;
 
 import br.com.postech30.challenge.dto.AddressDTO;
-import br.com.postech30.challenge.entity.Address;
 import br.com.postech30.challenge.service.AddressService;
 import javax.validation.ConstraintViolation;
 import javax.validation.Path;
