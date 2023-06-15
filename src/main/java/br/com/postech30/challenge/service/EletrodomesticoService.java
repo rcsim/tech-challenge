@@ -1,8 +1,10 @@
 package br.com.postech30.challenge.service;
 
-import br.com.postech30.challenge.entity.EletrodomesticoEntity;
+import br.com.postech30.challenge.dto.EletrodomesticoDTO;
+
+import javax.validation.Valid;
 
 public interface EletrodomesticoService {
 
-     void salvarEletrodomestico(EletrodomesticoEntity eletrodomestico);
+     void salvarEletrodomestico(@Valid EletrodomesticoDTO eletrodomestico);
 }

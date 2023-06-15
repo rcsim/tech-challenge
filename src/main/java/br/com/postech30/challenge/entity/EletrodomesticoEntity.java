@@ -1,29 +1,32 @@
 package br.com.postech30.challenge.entity;
 
 import com.sun.istack.NotNull;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.format.annotation.NumberFormat;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
-@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
-@NoArgsConstructor(force = true)
+@Table(name = "tb_eletrodomestico")
+@EqualsAndHashCode
 public class EletrodomesticoEntity {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Getter
     private int id;
-    @NotNull
+    @Getter
+    @Setter
     private String nome;
-    @NotNull
+    @Getter
+    @Setter
     private String modelo;
-    @NotNull
-    @NumberFormat
+    @Getter
+    @Setter
     private String potencia;
-    @NotNull
+    @Getter
+    @Setter
     private String fabricante;
 
 
