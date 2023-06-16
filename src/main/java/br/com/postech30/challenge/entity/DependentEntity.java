@@ -14,23 +14,23 @@ import java.time.LocalDate;
 @Data
 @Entity
 @NoArgsConstructor(force = true)
-public class PessoaEntity {
+public class DependentEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull(message = "Nome não pode ser nulo")
-    private String nome;
+    @NotNull(message = "Nome é um campo de preenchimento obrigatório")
+    private String name;
 
-    @NotNull(message = "Data de nascimento não pode ser nulo")
+    @NotNull(message = "Data de nascimento é um campo de preenchimento obrigatório")
     @JsonFormat(pattern = "dd-MM-yyyy")
-    private LocalDate dataNascimento;
+    private LocalDate birthday;
 
-    @NotNull(message = "Sexo não pode ser nulo")
-    private String sexo;
+    @NotNull(message = "Gênero é um campo de preenchimento obrigatório")
+    private String gender;
 
-    @NotNull(message = "Parentesco não pode ser nulo")
-    private String parentesco;
+    @NotNull(message = "Parentesco é um campo de preenchimento obrigatório")
+    private String parentage;
 
 }
