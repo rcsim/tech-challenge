@@ -1,9 +1,11 @@
 package br.com.postech30.challenge.controller;
 
-import br.com.postech30.challenge.entity.DependentEntity;
+import br.com.postech30.challenge.dto.DependentDTO;
+import br.com.postech30.challenge.entity.Dependent;
 import br.com.postech30.challenge.service.DependentService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +15,7 @@ import javax.validation.Valid;
 
 @RestController
 @RequestMapping(value = "/dependent")
+@Validated
 public class DependentController {
 
     private final DependentService dependentService;
@@ -22,7 +25,7 @@ public class DependentController {
     }
 
     @PostMapping()
-    public ResponseEntity<DependentEntity> addDependent(@RequestBody @Valid DependentEntity dependentEntity) {
-        return new ResponseEntity<>(dependentService.saveDependent(dependentEntity), HttpStatus.CREATED);
+    public ResponseEntity<Dependent> addDependent(@RequestBody @Valid DependentDTO dependentDTO) {
+        return new ResponseEntity<>(dependentService.saveDependent(dependentDTO), HttpStatus.CREATED);
     }
 }
