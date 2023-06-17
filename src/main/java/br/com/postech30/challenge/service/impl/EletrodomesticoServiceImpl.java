@@ -1,5 +1,6 @@
 package br.com.postech30.challenge.service.impl;
 
+import br.com.postech30.challenge.dto.EletrodomesticoDTO;
 import br.com.postech30.challenge.entity.EletrodomesticoEntity;
 import br.com.postech30.challenge.repository.EletrodomesticoRepository;
 import br.com.postech30.challenge.service.EletrodomesticoService;
@@ -12,7 +13,8 @@ public class EletrodomesticoServiceImpl implements EletrodomesticoService {
     @Autowired
     private EletrodomesticoRepository repository;
     @Override
-    public void salvarEletrodomestico(EletrodomesticoEntity eletrodomestico) {
-        repository.save(eletrodomestico);
+    public void salvarEletrodomestico(EletrodomesticoDTO eletrodomesticoDTO) {
+        EletrodomesticoEntity eletrodomesticoEntity = eletrodomesticoDTO.mapToEletrodomestico();
+        repository.save(eletrodomesticoEntity);
     }
 }
