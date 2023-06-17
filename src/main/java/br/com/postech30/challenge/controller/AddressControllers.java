@@ -5,6 +5,8 @@ import br.com.postech30.challenge.service.AddressService;
 import javax.validation.ConstraintViolation;
 import javax.validation.Path;
 import javax.validation.Validation;
+
+import br.com.postech30.challenge.service.impl.AddressServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +21,7 @@ import java.util.stream.Collectors;
 public class AddressControllers {
 
     @Autowired
-    private AddressService addressService;
+    AddressService service;
 
     @PostMapping
     public ResponseEntity newAddressDTO(@RequestBody AddressDTO addressDTO) {
@@ -31,7 +33,7 @@ public class AddressControllers {
             return ResponseEntity.badRequest().body(violacoesToMap);
         }
 
-        addressService.saveAddress(addressDTO);
+        service.saveAddress(addressDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body("Endereço cadastrado com sucesso!");
     }
 }
