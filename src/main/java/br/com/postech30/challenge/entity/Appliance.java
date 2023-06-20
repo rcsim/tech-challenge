@@ -1,17 +1,15 @@
 package br.com.postech30.challenge.entity;
 
-import com.sun.istack.NotNull;
 import lombok.*;
-import org.springframework.format.annotation.NumberFormat;
 
 import javax.persistence.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "tb_eletrodomestico")
+@Table(name = "tb_appliance")
 @EqualsAndHashCode
-public class EletrodomesticoEntity {
+public class Appliance {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter

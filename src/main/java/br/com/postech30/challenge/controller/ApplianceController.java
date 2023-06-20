@@ -1,8 +1,8 @@
 package br.com.postech30.challenge.controller;
 
 
-import br.com.postech30.challenge.dto.EletrodomesticoDTO;
-import br.com.postech30.challenge.service.EletrodomesticoService;
+import br.com.postech30.challenge.dto.ApplianceDTO;
+import br.com.postech30.challenge.service.ApplianceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,26 +21,26 @@ import java.util.stream.Collectors;
 
 
 @RestController
-@RequestMapping(value = "/eletrodomesticos")
-public class EletrodomesticoController {
+@RequestMapping(value = "/appliance")
+public class ApplianceController {
 
 
 
     @Autowired
-    EletrodomesticoService service;
+    ApplianceService service;
 
 
     @PostMapping()
-    public ResponseEntity cadastrarEletrodomestico( @RequestBody @Valid EletrodomesticoDTO eletrodomestico){
+    public ResponseEntity addAppliance(@RequestBody @Valid ApplianceDTO appliance){
 
-        Set<ConstraintViolation<EletrodomesticoDTO>> violacoes =
-                Validation.buildDefaultValidatorFactory().getValidator().validate(eletrodomestico);
+        Set<ConstraintViolation<ApplianceDTO>> violacoes =
+                Validation.buildDefaultValidatorFactory().getValidator().validate(appliance);
         Map<Path, String> violacoesToMap = violacoes.stream().collect(Collectors.toMap(violacao -> violacao.getPropertyPath(), violacao -> violacao.getMessage()));
 
         if (!violacoesToMap.isEmpty()) {
             return ResponseEntity.badRequest().body(violacoesToMap);
         }
-        service.salvarEletrodomestico(eletrodomestico);
+        service.saveAppliance(appliance);
         return ResponseEntity.status(HttpStatus.CREATED).body("Eletrodoméstico cadastrado com sucesso!");
     }
 
