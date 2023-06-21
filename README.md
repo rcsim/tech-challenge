@@ -1,24 +1,120 @@
 # tech-challenge
 Repositório para o Tech Challenge - Grupo 30
 
----- DEPENDENTES ----
+# Dependentes [/dependent]
 
-URL: http://localhost:8080/dependent
+Pessoas relacionadas ao nosso cliente, com algum nível de parentesco.
 
-Json da classe de Dependentes para o Postman com todos os campos preenchidos. 
-{
-    "name":"Victor",
-    "dateOfBirth":"28/12/1998",
-    "gender":"Masculino",
-    "parentage":"Teste"
-}
+### Dependente [POST]
 
-![image](https://github.com/rcsim/tech-challenge/assets/71778151/4da03697-9013-4135-a471-758a1a057947)
++ Atributos (object)
+    
+    + name: nome do parente (string, required).
+    + dateOfBirth: data de nascimento do parente - dd/MM/yyyy (LocalDate, required). 
+    + gender: gênero do parente (string, required).
+    + parentage: grau de parentesco do cliente (string, required).
 
-Json da classe de Dependentes para o Postman com todos os campos nulos. 
++ Request - 200 (application/json)
 
-![image](https://github.com/rcsim/tech-challenge/assets/71778151/895ef567-ca60-4cdf-b496-415dcae26a58)
+    + Body
 
-Json da classe de Dependentes para o Postman com todos os campos vazios. 
+            {
+                "name": "Victor",
+                "dateOfBirth": "01/01/2023",
+                "gender": "Masculino",
+                "parentage": "Filho"
+            }
++ Response - 200 (application/json)
 
-![image](https://github.com/rcsim/tech-challenge/assets/71778151/6fb2c201-9f1f-41d2-8d81-4f59f736c294)
+    + Body
+
+            {
+                	"id": 1,
+				"name": "Victor",
+                	"dateOfBirth": "2023-01-01",
+                	"gender": "Masculino",
+                	"parentage": "Filho"
+            }
+
+
++ Request - 400 - sem nome (application/json)
+
+    + Body
+
+            {
+                "name": "",
+                "dateOfBirth": "01/01/2023",
+                "gender": "Masculino",
+                "parentage": "Filho"
+            }
++ Response - 400 (application/json)
+
+    + Body
+
+            {
+                	"errors": [
+				"O nome é obrigatório"
+      			]
+            }
+
++ Request - 400 - sem data de nascimento (application/json)
+
+    + Body
+
+            {
+                "name": "Victor",
+                "dateOfBirth": "",
+                "gender": "Masculino",
+                "parentage": "Filho"
+            }
++ Response - 400 (application/json)
+
+    + Body
+
+            {
+                	"errors": [
+				"A data de nascimento é obrigatória. Padrão dd/MM/yyyy"
+      			]
+            }
+
+
++ Request - 400 - sem gênero (application/json)
+
+    + Body
+
+            {
+                "name": "Victor",
+                "dateOfBirth": "01/01/2023",
+                "gender": "",
+                "parentage": "Filho"
+            }
++ Response - 400 (application/json)
+
+    + Body
+
+            {
+                	"errors": [
+				"O gênero é obrigatório."
+      			]
+            }
+
+
++ Request - 400 - sem parentesco (application/json)
+
+    + Body
+
+            {
+                "name": "Victor",
+                "dateOfBirth": "01/01/2023",
+                "gender": "Masculino",
+                "parentage": ""
+            }
++ Response - 400 (application/json)
+
+    + Body
+
+            {
+                	"errors": [
+				"O parentesco é obrigatório."
+      			]
+            }
