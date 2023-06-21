@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
@@ -22,7 +23,7 @@ public class DependentDTO {
     private String name;
 
     @NotNull(message = "A data de nascimento é obrigatória. Padrão dd/MM/yyyy")
-    @Past(message = "The date of birth must be in the past.")
+    @Past(message = "A data de nascimento precisa estar no passado.")
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dateOfBirth;
 
