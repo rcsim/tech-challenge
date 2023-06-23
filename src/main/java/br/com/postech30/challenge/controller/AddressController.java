@@ -4,6 +4,7 @@ import br.com.postech30.challenge.dto.AddressDTO;
 import br.com.postech30.challenge.service.AddressService;
 import javax.validation.ConstraintViolation;
 import javax.validation.Path;
+import javax.validation.Valid;
 import javax.validation.Validation;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,7 @@ public class AddressController {
     AddressService service;
 
     @PostMapping
-    public ResponseEntity newAddressDTO(@RequestBody AddressDTO addressDTO) {
+    public ResponseEntity addAddressDTO(@RequestBody @Valid AddressDTO addressDTO) {
         Set<ConstraintViolation<AddressDTO>> violacoes =
                 Validation.buildDefaultValidatorFactory().getValidator().validate(addressDTO);
         Map<Path, String> violacoesToMap = violacoes.stream().collect(Collectors.toMap(violacao -> violacao.getPropertyPath(), violacao -> violacao.getMessage()));
