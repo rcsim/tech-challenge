@@ -16,16 +16,16 @@ public class Appliance {
     private int id;
     @Getter
     @Setter
-    private String nome;
+    private String name;
     @Getter
     @Setter
-    private String modelo;
+    private String model;
     @Getter
     @Setter
-    private String potencia;
+    private String power;
     @Getter
     @Setter
-    private String fabricante;
+    private String manufacturer;
 
 
 
