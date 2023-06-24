@@ -1,7 +1,7 @@
 # tech-challenge
-Repositório para o Tech Challenge - Grupo 30
+### Repositório para o Tech Challenge - Grupo 30
 
----- DEPENDENTES ----
+#### ---- DEPENDENTES ----
 
 URL: http://localhost:8080/dependent
 
@@ -24,3 +24,61 @@ Json da classe de Dependentes para o Postman com todos os campos nulos.
 Json da classe de Dependentes para o Postman com todos os campos vazios. 
 
 ![image](https://github.com/rcsim/tech-challenge/assets/71778151/6fb2c201-9f1f-41d2-8d81-4f59f736c294)
+
+
+
+#### ---- ENDEREÇOS ----
+
+URL: http://localhost:8080/address
+
+Json da classe de Endereços para o Postman com todos os campos preenchidos.
+
+```json
+{
+  
+  
+}
+
+```
+
+Json da classe de Endereços para o Postman com todos os campos nulos.
+
+![image]
+
+Json da classe de Endereços para o Postman com todos os campos vazios.
+
+![image]
+
+
+
+#### ---- ELETRODOMÉSTICOS ----
+
+URL: http://localhost:8080/appliance
+
+Json da classe de Eletrodomésticos para o Postman com todos os campos preenchidos. 
+
+```json
+{
+  
+  
+}
+
+```
+
+Json da classe de Eletrodomésticos para o Postman com todos os campos nulos. 
+
+![image]
+
+Json da classe de Eletrodomésticos para o Postman com todos os campos vazios. 
+
+![image]
+
+
+
+
+
+
+
+
+
+
