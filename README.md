@@ -6,12 +6,14 @@ Repositório para o Tech Challenge - Grupo 30
 URL: http://localhost:8080/dependent
 
 Json da classe de Dependentes para o Postman com todos os campos preenchidos. 
+```json
 {
     "name":"Victor",
     "dateOfBirth":"28/12/1998",
     "gender":"Masculino",
     "parentage":"Teste"
 }
+```
 
 ![image](https://github.com/rcsim/tech-challenge/assets/71778151/4da03697-9013-4135-a471-758a1a057947)
 
