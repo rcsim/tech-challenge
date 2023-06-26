@@ -201,7 +201,7 @@ Pessoas relacionadas ao nosso cliente, com algum nível de parentesco.
                     "O modelo é obrigatório"
                  ]
             }       
-        + Request - 400(application/json)
+    + Request - 400(application/json)
 
         + Body
 
@@ -219,8 +219,8 @@ Pessoas relacionadas ao nosso cliente, com algum nível de parentesco.
                 "errors": [
                     "A potencia é obrigatória"
                  ]
-            }       + Request - 400(application/json)
-
+            }    
+    + Request - 400(application/json)
         + Body
 
             {
