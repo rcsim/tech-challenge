@@ -1,8 +1,8 @@
 # tech-challenge
 Repositório para o Tech Challenge - Grupo 30
 
-
-As  tecnologias e ferramentas utilizadas no desenvolvimento do sistema do desafio proposto. Utilizamos Java como linguagem principal, JPA para persistência dos dados, Lombok para reduzir a verbosidade do código, H2 como banco de dados em memória e Spring Starter Validation para validar os dados de entrada. Essas tecnologias e ferramentas contribuíram para o desenvolvimento eficiente e robusto do sistema, atingindo os objetivos propostos no desafio.
++ As  tecnologias e ferramentas utilizadas no desenvolvimento do sistema do desafio proposto.
+ Utilizamos Java como linguagem principal, JPA para persistência dos dados, Lombok para reduzir a verbosidade do código, H2 como banco de dados em memória e Spring Starter Validation para validar os dados de entrada. Essas tecnologias e ferramentas contribuíram para o desenvolvimento eficiente e robusto do sistema, atingindo os objetivos propostos no desafio.
 
 
 
