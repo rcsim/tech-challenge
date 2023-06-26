@@ -150,12 +150,14 @@ Pessoas relacionadas ao nosso cliente, com algum nível de parentesco.
 
         + Body
 
+
             {
                 "nome":"112",
                 "modelo":"asda",
                 "potencia":"122",
                 "fabricante":"asdas"
             }
+
     + Response - 201(application/text)
 
         + Body
