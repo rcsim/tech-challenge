@@ -9,8 +9,8 @@ As  tecnologias e ferramentas utilizadas no desenvolvimento do sistema do desafi
 
 Endpoints disponiveis para acesso :
 * [**Dependentes**](#dependentes-dependent)
-* [**Eletrodomesticos**](#eletrodomesticos-appliance")
-* [**Enderecos**]()
+* [**Eletrodomesticos**](#eletrodomesticos-appliance)
+* [**Enderecos**](#tech-challenge)
 
 
 
