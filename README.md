@@ -8,8 +8,8 @@ As  tecnologias e ferramentas utilizadas no desenvolvimento do sistema do desafi
 
 
 Endpoints disponiveis para acesso :
-* [**Dependentes**](#reference/dependent)
-* [**Eletrodomesticos**](#reference/appliance)
+* [**Dependentes**](#reference/#dependentes-dependent)
+* [**Eletrodomesticos**](#reference/#eletrodomesticos-appliance")
 * [**Enderecos**](#reference/enderecos)
 
 
@@ -138,7 +138,7 @@ Pessoas relacionadas ao nosso cliente, com algum nível de parentesco.
 
     Aparelhos eletrônicos dos usuários cadastrados em nosso sistema.
 
-    
+
 + Atributos (object)
     
     + nome: nome do eletrodomestico (string, required).
