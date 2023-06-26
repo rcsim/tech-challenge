@@ -159,8 +159,9 @@ Pessoas relacionadas ao nosso cliente, com algum nível de parentesco.
     + Response - 201(application/text)
 
         + Body
-
-           Eletrodoméstico cadastrado com sucesso!
+            {
+                Eletrodoméstico cadastrado com sucesso!
+            }
 
     + Request - 400(application/json)
 
@@ -172,7 +173,7 @@ Pessoas relacionadas ao nosso cliente, com algum nível de parentesco.
                 "potencia":"120",
                 "fabricante":"Brastemp"
             }
-    + Response - 400(application/text)
+    + Response - 400(application/json)
 
         + Body
 
@@ -191,7 +192,7 @@ Pessoas relacionadas ao nosso cliente, com algum nível de parentesco.
                 "potencia":"120",
                 "fabricante":"Brastemp"
             }
-    + Response - 400(application/text)
+    + Response - 400(application/json)
 
         + Body
 
@@ -210,7 +211,7 @@ Pessoas relacionadas ao nosso cliente, com algum nível de parentesco.
                 "potencia":"",
                 "fabricante":"Brastemp"
             }
-    + Response - 400(application/text)
+    + Response - 400(application/json)
 
         + Body
 
@@ -228,7 +229,7 @@ Pessoas relacionadas ao nosso cliente, com algum nível de parentesco.
                 "potencia":"120",
                 "fabricante":""
             }
-    + Response - 400(application/text)
+    + Response - 400(application/json)
 
         + Body
 
