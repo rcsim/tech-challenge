@@ -17,17 +17,17 @@ public class ApplianceDTO {
     @Getter
     private int id;
     @JsonProperty
-    @NotBlank(message = "Esse é um campo de preenchimento obrigatório")
+    @NotBlank(message = "name é um campo obrigatório")
     private String name;
     @JsonProperty
-    @NotBlank(message = "Esse é um campo de preenchimento obrigatório")
+    @NotBlank(message = "model é um campo obrigatório")
     private String model;
     @JsonProperty
-    @NotBlank(message = "Esse é um campo de preenchimento obrigatório")
+    @NotBlank(message = "power é um campo obrigatório")
     @NumberFormat
     private String power;
     @JsonProperty
-    @NotBlank(message = "Esse é um campo de preenchimento obrigatório")
+    @NotBlank(message = "manufacturer é um campo obrigatório")
     private String manufacturer;
 
     public ApplianceDTO(Appliance entity) {

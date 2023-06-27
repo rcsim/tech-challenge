@@ -1,9 +1,11 @@
 # tech-challenge
 ### Repositório para o Tech Challenge - Grupo 30
 
-<<<<<<< HEAD
-# Dependentes [/dependent]
-=======
+
++ Utilizamos Java como linguagem principal, JPA para persistência dos dados, Lombok para reduzir a verbosidade do código, H2 como banco de dados em memória e Spring Starter Validation para validar os dados de entrada. Essas tecnologias e ferramentas contribuíram para o desenvolvimento eficiente e robusto do sistema, atingindo os objetivos propostos no desafio.
+
+
+
 
 #### ---- INSTÂNCIA DE ENTIDADES PARA BD EM MEMÓRIA ----
 
@@ -13,22 +15,9 @@
 
 
 #### ---- DEPENDENTES ----
->>>>>>> feature/reviewAddress
 
 Pessoas relacionadas ao nosso cliente, com algum nível de parentesco.
 
-<<<<<<< HEAD
-### Dependente [POST]
-
-+ Atributos (object)
-    
-    + name: nome do parente (string, required).
-    + dateOfBirth: data de nascimento do parente - dd/MM/yyyy (LocalDate, required). 
-    + gender: gênero do parente (string, required).
-    + parentage: grau de parentesco do cliente (string, required).
-
-+ Request - 200 (application/json)
-=======
 - Json da classe de Dependentes para o Postman com todos os campos preenchidos. 
 ```json
 {
@@ -46,112 +35,9 @@ Pessoas relacionadas ao nosso cliente, com algum nível de parentesco.
 
 
 - Json da classe de Dependentes para o Postman com todos os campos nulos. 
->>>>>>> feature/reviewAddress
 
     + Body
 
-<<<<<<< HEAD
-            {
-                "name": "Victor",
-                "dateOfBirth": "01/01/2023",
-                "gender": "Masculino",
-                "parentage": "Filho"
-            }
-+ Response - 200 (application/json)
-
-    + Body
-
-            {
-                	"id": 1,
-				"name": "Victor",
-                	"dateOfBirth": "2023-01-01",
-                	"gender": "Masculino",
-                	"parentage": "Filho"
-            }
-
-
-+ Request - 400 - sem nome (application/json)
-
-    + Body
-
-            {
-                "name": "",
-                "dateOfBirth": "01/01/2023",
-                "gender": "Masculino",
-                "parentage": "Filho"
-            }
-+ Response - 400 (application/json)
-
-    + Body
-
-            {
-                	"errors": [
-				"O nome é obrigatório"
-      			]
-            }
-
-+ Request - 400 - sem data de nascimento (application/json)
-
-    + Body
-
-            {
-                "name": "Victor",
-                "dateOfBirth": "",
-                "gender": "Masculino",
-                "parentage": "Filho"
-            }
-+ Response - 400 (application/json)
-
-    + Body
-
-            {
-                	"errors": [
-				"A data de nascimento é obrigatória. Padrão dd/MM/yyyy"
-      			]
-            }
-
-
-+ Request - 400 - sem gênero (application/json)
-
-    + Body
-
-            {
-                "name": "Victor",
-                "dateOfBirth": "01/01/2023",
-                "gender": "",
-                "parentage": "Filho"
-            }
-+ Response - 400 (application/json)
-
-    + Body
-
-            {
-                	"errors": [
-				"O gênero é obrigatório."
-      			]
-            }
-
-
-+ Request - 400 - sem parentesco (application/json)
-
-    + Body
-
-            {
-                "name": "Victor",
-                "dateOfBirth": "01/01/2023",
-                "gender": "Masculino",
-                "parentage": ""
-            }
-+ Response - 400 (application/json)
-
-    + Body
-
-            {
-                	"errors": [
-				"O parentesco é obrigatório."
-      			]
-            }
-=======
 - Json da classe de Dependentes para o Postman com todos os campos vazios. 
 
 ![image](https://github.com/rcsim/tech-challenge/assets/71778151/6fb2c201-9f1f-41d2-8d81-4f59f736c294)
@@ -227,4 +113,3 @@ URL: http://localhost:8080/appliance
 
 
 
->>>>>>> feature/reviewAddress
