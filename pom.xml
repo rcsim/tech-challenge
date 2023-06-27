@@ -12,7 +12,7 @@
 	<artifactId>challenge</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>challenge</name>
-	<description>Tech Challenge Grupo 30</description>
+	<description>Tech Challenge Grupo 30</description>W
 	<properties>
 		<java.version>11</java.version>
 	</properties>
