@@ -36,7 +36,7 @@ Pessoas relacionadas ao nosso cliente, com algum nível de parentesco.
 
 - Json da classe de Dependentes para o Postman com todos os campos nulos. 
 
-
+![image](https://github.com/rcsim/tech-challenge/assets/71778151/895ef567-ca60-4cdf-b496-415dcae26a58)
 
 - Json da classe de Dependentes para o Postman com todos os campos vazios. 
 
