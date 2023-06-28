@@ -17,28 +17,28 @@ public class ApplianceDTO {
     @Getter
     private int id;
     @JsonProperty
-    @NotBlank(message = "Esse é um campo de preenchimento obrigatório")
-    private String nome;
+    @NotBlank(message = "name é um campo obrigatório")
+    private String name;
     @JsonProperty
-    @NotBlank(message = "Esse é um campo de preenchimento obrigatório")
-    private String modelo;
+    @NotBlank(message = "model é um campo obrigatório")
+    private String model;
     @JsonProperty
-    @NotBlank(message = "Esse é um campo de preenchimento obrigatório")
+    @NotBlank(message = "power é um campo obrigatório")
     @NumberFormat
-    private String potencia;
+    private String power;
     @JsonProperty
-    @NotBlank(message = "Esse é um campo de preenchimento obrigatório")
-    private String fabricante;
+    @NotBlank(message = "manufacturer é um campo obrigatório")
+    private String manufacturer;
 
     public ApplianceDTO(Appliance entity) {
         this.id = entity.getId();
-        this.nome = entity.getNome();
-        this.modelo = entity.getModelo();
-        this.potencia = entity.getPotencia();
-        this.fabricante = entity.getFabricante();
+        this.name = entity.getName();
+        this.model = entity.getModel();
+        this.power = entity.getPower();
+        this.manufacturer = entity.getManufacturer();
        }
 
     public Appliance mapToAppliance() {
-        return new Appliance(id, nome, modelo, potencia, fabricante);
+        return new Appliance(id, name, model, power, manufacturer);
     }
 }

@@ -33,13 +33,6 @@ public class ApplianceController {
     @PostMapping()
     public ResponseEntity addAppliance(@RequestBody @Valid ApplianceDTO appliance){
 
-        Set<ConstraintViolation<ApplianceDTO>> violacoes =
-                Validation.buildDefaultValidatorFactory().getValidator().validate(appliance);
-        Map<Path, String> violacoesToMap = violacoes.stream().collect(Collectors.toMap(violacao -> violacao.getPropertyPath(), violacao -> violacao.getMessage()));
-
-        if (!violacoesToMap.isEmpty()) {
-            return ResponseEntity.badRequest().body(violacoesToMap);
-        }
         service.saveAppliance(appliance);
         return ResponseEntity.status(HttpStatus.CREATED).body("Eletrodoméstico cadastrado com sucesso!");
     }
