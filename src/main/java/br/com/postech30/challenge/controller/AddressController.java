@@ -25,13 +25,6 @@ public class AddressController {
 
     @PostMapping
     public ResponseEntity addAddressDTO(@RequestBody @Valid AddressDTO addressDTO) {
-        Set<ConstraintViolation<AddressDTO>> violacoes =
-                Validation.buildDefaultValidatorFactory().getValidator().validate(addressDTO);
-        Map<Path, String> violacoesToMap = violacoes.stream().collect(Collectors.toMap(violacao -> violacao.getPropertyPath(), violacao -> violacao.getMessage()));
-
-        if (!violacoesToMap.isEmpty()) {
-            return ResponseEntity.badRequest().body(violacoesToMap);
-        }
 
         service.saveAddress(addressDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body("Endereço cadastrado com sucesso!");
