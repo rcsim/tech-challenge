@@ -35,6 +35,8 @@ A principal dificultade encontrada foi a necessidade de se realizar algumas refa
 
 #### ---- DEPENDENTES ----
 
+URL: http://localhost:8080/dependent
+
 Pessoas relacionadas ao nosso cliente, com algum nível de parentesco.
 
 - Json da classe de Dependentes para o Postman com todos os campos preenchidos. 
