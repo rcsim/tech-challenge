@@ -1,12 +1,31 @@
 # tech-challenge
-### Repositório para o Tech Challenge - Grupo 30
+## Repositório para o Tech Challenge - Grupo 30
+
+### 1- Relatório Técnico - Grupo 30
+Inicialmente foram definidas as versões que seriam utilizadas no projeto:
++ Maven
++  Java 11
++  Spring Boot 2.7.12
+
+Também realizamos a definição das bibliotecas que seriam utilizadas:
++  Spring Web
++  Lombok
++  H2 Database
+
+Quanto à versão utilizada do Java, decidimos utilizar a versão 11 por entender que hoje esta versão é mais utilizada no mercado e também consideramos a mais estável.
+
+Optamos por utilizar um banco de dados em memória, apesar de não ser requisito, por entendermos que facilitaria a evolução do projeto na próxima etapa sem adicionar complexidade.
+
+Também optamos pelo Spring Starter Validation para validar os dados de entrada.
+
+Essas tecnologias e ferramentas contribuíram para o desenvolvimento eficiente e robusto do sistema, que em conjunto com reuniões semanais e distribuição de tarefas para cada integrante do grupo, possibilitou atingirmos os objetivos propostos no desafio.
+
+A principal dificultade encontrada foi a necessidade de se realizar algumas refatorações afim de padronizar o código das 3 APIs, já que estavam significativamente diferentes em seu formato devido as preferências individuais de cada desenvolverdor.
 
 
-+ Utilizamos Java como linguagem principal, JPA para persistência dos dados, Lombok para reduzir a verbosidade do código, H2 como banco de dados em memória e Spring Starter Validation para validar os dados de entrada. Essas tecnologias e ferramentas contribuíram para o desenvolvimento eficiente e robusto do sistema, atingindo os objetivos propostos no desafio.
 
 
-
-
+### 2- Documentação API
 #### ---- INSTÂNCIA DE ENTIDADES PARA BD EM MEMÓRIA ----
 
 <img src = "./image/createdTable.png" />
@@ -15,6 +34,8 @@
 
 
 #### ---- DEPENDENTES ----
+
+URL: http://localhost:8080/dependent
 
 Pessoas relacionadas ao nosso cliente, com algum nível de parentesco.
 
