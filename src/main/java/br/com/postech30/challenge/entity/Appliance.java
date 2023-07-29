@@ -2,7 +2,7 @@ package br.com.postech30.challenge.entity;
 
 import lombok.*;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @AllArgsConstructor
 @NoArgsConstructor

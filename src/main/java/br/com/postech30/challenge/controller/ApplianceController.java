@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.validation.ConstraintViolation;
-import javax.validation.Path;
-import javax.validation.Valid;
-import javax.validation.Validation;
+import jakarta.validation.ConstraintViolation;
+import jakarta.validation.Path;
+import jakarta.validation.Valid;
+import jakarta.validation.Validation;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
