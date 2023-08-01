@@ -2,10 +2,10 @@ package br.com.postech30.challenge.controller;
 
 import br.com.postech30.challenge.dto.AddressDTO;
 import br.com.postech30.challenge.service.AddressService;
-import javax.validation.ConstraintViolation;
-import javax.validation.Path;
-import javax.validation.Valid;
-import javax.validation.Validation;
+import jakarta.validation.ConstraintViolation;
+import jakarta.validation.Path;
+import jakarta.validation.Valid;
+import jakarta.validation.Validation;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

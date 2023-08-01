@@ -2,7 +2,7 @@ package br.com.postech30.challenge.dto;
 
 import br.com.postech30.challenge.entity.Address;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import javax.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
