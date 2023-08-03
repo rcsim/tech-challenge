@@ -13,18 +13,23 @@ public class AddressDTO {
     @Getter
     private Long id;
     @JsonProperty
+    @Getter
     @NotBlank(message = "A rua é um campo de preenchimento obrigatório")
     private String street;
     @JsonProperty
+    @Getter
     @NotBlank(message = "O número é um campo de preenchimento obrigatório")
     private String number;
     @JsonProperty
+    @Getter
     @NotBlank(message = "O bairro é um campo de preenchimento obrigatório")
     private String district;
     @JsonProperty
+    @Getter
     @NotBlank(message = "A cidade é um campo de preenchimento obrigatório")
     private String city;
     @JsonProperty
+    @Getter
     @NotBlank(message = "O estado é um campo de preenchimento obrigatório")
     private String estate;
 
@@ -37,8 +42,4 @@ public class AddressDTO {
         this.estate = entity.getEstate();
     }
 
-
-    public Address mapToAddress() {
-        return new Address(id, street, number, district, city, estate);
-    }
 }
