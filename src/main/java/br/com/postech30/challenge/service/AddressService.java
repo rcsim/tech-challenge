@@ -7,4 +7,6 @@ import java.util.List;
 public interface AddressService {
 
     void saveAddress(AddressDTO addressDTO);
+
+    List<AddressDTO> findAll();
 }

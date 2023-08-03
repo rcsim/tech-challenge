@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -24,9 +25,16 @@ public class AddressController {
     AddressService service;
 
     @PostMapping
-    public ResponseEntity addAddressDTO(@RequestBody @Valid AddressDTO addressDTO) {
+    public ResponseEntity<String> addAddress(@RequestBody @Valid AddressDTO addressDTO) {
 
         service.saveAddress(addressDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body("Endereço cadastrado com sucesso!");
+    }
+
+    @GetMapping
+    public ResponseEntity<List<AddressDTO>> getAll() {
+
+        List<AddressDTO> list = service.findAll();
+        return ResponseEntity.status(HttpStatus.OK).body(list);
     }
 }

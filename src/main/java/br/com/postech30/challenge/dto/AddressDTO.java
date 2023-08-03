@@ -13,19 +13,19 @@ public class AddressDTO {
     @Getter
     private Long id;
     @JsonProperty
-    @NotBlank(message = "Esse é um campo de preenchimento obrigatório")
+    @NotBlank(message = "A rua é um campo de preenchimento obrigatório")
     private String street;
     @JsonProperty
-    @NotBlank(message = "Esse é um campo de preenchimento obrigatório")
+    @NotBlank(message = "O número é um campo de preenchimento obrigatório")
     private String number;
     @JsonProperty
-    @NotBlank(message = "Esse é um campo de preenchimento obrigatório")
+    @NotBlank(message = "O bairro é um campo de preenchimento obrigatório")
     private String district;
     @JsonProperty
-    @NotBlank(message = "Esse é um campo de preenchimento obrigatório")
+    @NotBlank(message = "A cidade é um campo de preenchimento obrigatório")
     private String city;
     @JsonProperty
-    @NotBlank(message = "Esse é um campo de preenchimento obrigatório")
+    @NotBlank(message = "O estado é um campo de preenchimento obrigatório")
     private String estate;
 
     public AddressDTO(Address entity) {

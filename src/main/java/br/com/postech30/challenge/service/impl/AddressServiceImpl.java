@@ -7,6 +7,9 @@ import br.com.postech30.challenge.service.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class AddressServiceImpl implements AddressService {
 
@@ -16,5 +19,11 @@ public class AddressServiceImpl implements AddressService {
     public void saveAddress(AddressDTO addressDTO) {
         Address address = addressDTO.mapToAddress();
         addressRepository.save(address);
+    }
+
+    @Override
+    public List<AddressDTO> findAll() {
+        List<Address> list = addressRepository.findAll();
+        return list.stream().map(AddressDTO::new).collect(Collectors.toList());
     }
 }
