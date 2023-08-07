@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
@@ -29,8 +29,13 @@ public class AddressServiceImpl implements AddressService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<AddressDTO> findAll() {
-        List<Address> list = repository.findAll();
+    public List<AddressDTO> search(String text) {
+        List<Address> list;
+        if (Objects.equals(text, "")) {
+            list = repository.findAll();
+        } else {
+            list = repository.findByStreetIgnoreCaseContainingOrDistrictIgnoreCaseContainingOrCityIgnoreCaseContainingOrStateIgnoreCaseContaining(text, text, text, text);
+        }
         return list.stream().map(AddressDTO::new).collect(Collectors.toList());
     }
 
@@ -68,7 +73,7 @@ public class AddressServiceImpl implements AddressService {
     public Address mapTo(AddressDTO dto, Address entity) {
         entity.setCity(dto.getCity());
         entity.setDistrict(dto.getDistrict());
-        entity.setEstate(dto.getEstate());
+        entity.setState(dto.getState());
         entity.setStreet(dto.getStreet());
         entity.setNumber(dto.getNumber());
         return entity;

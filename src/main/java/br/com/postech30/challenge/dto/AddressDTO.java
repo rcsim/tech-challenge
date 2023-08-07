@@ -31,7 +31,7 @@ public class AddressDTO {
     @JsonProperty
     @Getter
     @NotBlank(message = "O estado é um campo de preenchimento obrigatório")
-    private String estate;
+    private String state;
 
     public AddressDTO(Address entity) {
         this.id = entity.getId();
@@ -39,7 +39,7 @@ public class AddressDTO {
         this.number = entity.getNumber();
         this.district = entity.getDistrict();
         this.city = entity.getCity();
-        this.estate = entity.getEstate();
+        this.state = entity.getState();
     }
 
 }

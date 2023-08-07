@@ -26,9 +26,10 @@ public class AddressController {
     }
 
     @GetMapping
-    public ResponseEntity<List<AddressDTO>> getAllAddresses() {
+    public  ResponseEntity<List<AddressDTO>> getAddresses(
+            @RequestParam(defaultValue = "") String search) {
 
-        List<AddressDTO> list = service.findAll();
+        List<AddressDTO> list = service.search(search);
         return ResponseEntity.status(HttpStatus.OK).body(list);
     }
 
