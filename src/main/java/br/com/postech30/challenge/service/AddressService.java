@@ -7,4 +7,12 @@ import java.util.List;
 public interface AddressService {
 
     void saveAddress(AddressDTO addressDTO);
+
+    List<AddressDTO> findAll();
+
+    AddressDTO findById(Long id);
+
+    void delete(Long id);
+
+    void update(Long id, AddressDTO addressDTO);
 }
