@@ -29,5 +29,5 @@ public class Address {
     private String city;
     @Getter
     @Setter
-    private String estate;
+    private String state;
 }
