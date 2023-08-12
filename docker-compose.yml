@@ -1,0 +1,31 @@
+services:
+  db:
+    image: postgres
+    volumes:
+      - ./01-schema.sql:/docker-entrypoint-initdb.d/01-schema.sql
+      - ./02-seed.sql:/docker-entrypoint-initdb.d/02-seed.sql
+    environment:
+      - POSTGRES_USER=compose-postgres
+      - POSTGRES_PASSWORD=compose-postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - my-networks
+
+  app:
+    depends_on:
+      - db
+    build: .
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/compose-postgres
+      - SPRING_DATASOURCE_USERNAME=compose-postgres
+      - SPRING_DATASOURCE_PASSWORD=compose-postgres
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    ports:
+      - "8080:8080"
+    networks:
+      - my-networks
+
+networks:
+  my-networks:
+    driver: bridge
