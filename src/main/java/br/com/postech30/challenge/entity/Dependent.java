@@ -1,9 +1,6 @@
 package br.com.postech30.challenge.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;
@@ -27,5 +24,10 @@ public class Dependent {
     private String gender;
 
     private String parentage;
+
+    @Getter
+    @Setter
+    @ManyToOne
+    private Address address;
 
 }

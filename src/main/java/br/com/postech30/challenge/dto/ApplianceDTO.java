@@ -15,18 +15,22 @@ import jakarta.validation.constraints.NotBlank;
 public class ApplianceDTO {
 
     @Getter
-    private int id;
+    private Long id;
     @JsonProperty
+    @Getter
     @NotBlank(message = "name é um campo obrigatório")
     private String name;
     @JsonProperty
+    @Getter
     @NotBlank(message = "model é um campo obrigatório")
     private String model;
     @JsonProperty
     @NotBlank(message = "power é um campo obrigatório")
     @NumberFormat
+    @Getter
     private String power;
     @JsonProperty
+    @Getter
     @NotBlank(message = "manufacturer é um campo obrigatório")
     private String manufacturer;
 
@@ -37,8 +41,4 @@ public class ApplianceDTO {
         this.power = entity.getPower();
         this.manufacturer = entity.getManufacturer();
        }
-
-    public Appliance mapToAppliance() {
-        return new Appliance(id, name, model, power, manufacturer);
-    }
 }
