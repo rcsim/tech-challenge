@@ -3,6 +3,7 @@ package br.com.postech30.challenge.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @AllArgsConstructor
@@ -34,10 +35,15 @@ public class Address {
     private String state;
 
     @Getter
-    @OneToMany
-    private List<Appliance> applianceList;
+    @OneToMany(mappedBy = "address")
+    private List<Appliance> applianceList = new ArrayList<>();
 
     @Getter
-    @OneToMany
-    private List<Dependent> dependentList;
+    @OneToMany(mappedBy = "address")
+    private List<Dependent> dependentList = new ArrayList<>();
+
+    @Getter
+    @Setter
+    private Long userId;
+
 }

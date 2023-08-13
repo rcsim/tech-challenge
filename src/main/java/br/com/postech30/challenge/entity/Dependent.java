@@ -28,6 +28,11 @@ public class Dependent {
     @Getter
     @Setter
     @ManyToOne
+    @JoinColumn(name = "address_id")
     private Address address;
+
+    @Getter
+    @Setter
+    private Long userId;
 
 }

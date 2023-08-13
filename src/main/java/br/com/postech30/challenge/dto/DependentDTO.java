@@ -2,8 +2,10 @@ package br.com.postech30.challenge.dto;
 
 import br.com.postech30.challenge.entity.Dependent;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import jakarta.validation.constraints.NotBlank;
@@ -33,12 +35,23 @@ public class DependentDTO {
     @NotEmpty(message = "O parentesco é obrigatório.")
     private String parentage;
 
+    @JsonProperty
+    @Getter
+    @NotNull(message = "O endereço precisa estar associado a um endereço")
+    private Long addressId;
+    @JsonProperty
+    @Getter
+    @NotNull(message = "O endereço precisa estar associado a um usuário")
+    private Long userId;
+
     public DependentDTO(Dependent dependent) {
         this.id = dependent.getId();
         this.name = dependent.getName();
         this.dateOfBirth = dependent.getDateOfBirth();
         this.gender = dependent.getGender();
         this.parentage = dependent.getParentage();
+        this.addressId = dependent.getAddress().getId();
+        this.userId = dependent.getUserId();
     }
 
 }

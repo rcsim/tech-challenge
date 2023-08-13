@@ -3,6 +3,7 @@ package br.com.postech30.challenge.dto;
 import br.com.postech30.challenge.entity.Address;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -33,6 +34,11 @@ public class AddressDTO {
     @NotBlank(message = "O estado é um campo de preenchimento obrigatório")
     private String state;
 
+    @JsonProperty
+    @Getter
+    @NotNull(message = "O endereço precisa estar associado a um usuário")
+    private Long userId;
+
     public AddressDTO(Address entity) {
         this.id = entity.getId();
         this.street = entity.getStreet();
@@ -40,6 +46,7 @@ public class AddressDTO {
         this.district = entity.getDistrict();
         this.city = entity.getCity();
         this.state = entity.getState();
+        this.userId = entity.getUserId();
     }
 
 }

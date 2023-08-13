@@ -4,6 +4,8 @@ import br.com.postech30.challenge.dto.AddressDTO;
 import br.com.postech30.challenge.dto.ApplianceDTO;
 import br.com.postech30.challenge.entity.Address;
 import br.com.postech30.challenge.entity.Appliance;
+import br.com.postech30.challenge.exceptions.ResourceNotFoundException;
+import br.com.postech30.challenge.repository.AddressRepository;
 import br.com.postech30.challenge.repository.ApplianceRepository;
 import br.com.postech30.challenge.service.ApplianceService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,10 @@ public class ApplianceServiceImpl implements ApplianceService {
 
     @Autowired
     private ApplianceRepository repository;
+
+    @Autowired
+    private AddressRepository addressRepository;
+
     @Override
     public void saveAppliance(ApplianceDTO applianceDTO) {
         Appliance appliance = new Appliance();
@@ -26,6 +32,10 @@ public class ApplianceServiceImpl implements ApplianceService {
         entity.setModel(dto.getModel());
         entity.setPower(dto.getPower());
         entity.setManufacturer(dto.getManufacturer());
+        entity.setAddress(
+                addressRepository.findById(dto.getAddressId()).orElseThrow(
+                        () -> new ResourceNotFoundException("Não é possível realizar o cadastro em um endereço inexistente")));
+        entity.setUserId(dto.getUserId());
         return entity;
     }
 }
