@@ -41,8 +41,4 @@ public class DependentDTO {
         this.parentage = dependent.getParentage();
     }
 
-    public Dependent mapToDependent() {
-        return new Dependent(id, name, dateOfBirth, gender, parentage);
-    }
-
 }

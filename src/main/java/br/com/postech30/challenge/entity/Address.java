@@ -3,6 +3,8 @@ package br.com.postech30.challenge.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -30,4 +32,12 @@ public class Address {
     @Getter
     @Setter
     private String state;
+
+    @Getter
+    @OneToMany
+    private List<Appliance> applianceList;
+
+    @Getter
+    @OneToMany
+    private List<Dependent> dependentList;
 }
