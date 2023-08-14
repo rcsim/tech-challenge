@@ -25,7 +25,7 @@ public class DependentController {
     }
 
     @PostMapping()
-    public ResponseEntity<Dependent> addDependent(@RequestBody @Valid DependentDTO dependentDTO) {
+    public ResponseEntity<DependentDTO> addDependent(@RequestBody @Valid DependentDTO dependentDTO) {
         return new ResponseEntity<>(dependentService.saveDependent(dependentDTO), HttpStatus.CREATED);
     }
 }

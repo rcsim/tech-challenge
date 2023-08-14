@@ -23,10 +23,10 @@ public class DependentServiceImpl implements DependentService {
     AddressRepository addressRepository;
 
     @Override
-    public Dependent saveDependent(DependentDTO dependentDTO) {
+    public DependentDTO saveDependent(DependentDTO dependentDTO) {
         Dependent dependent = new Dependent();
         dependent = mapTo(dependentDTO, dependent);
-        return dependentRepository.save(dependent);
+        return new DependentDTO(dependentRepository.save(dependent));
     }
 
     public Dependent mapTo(DependentDTO dto, Dependent entity) {

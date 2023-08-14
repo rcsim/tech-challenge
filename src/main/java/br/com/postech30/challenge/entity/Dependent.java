@@ -8,21 +8,29 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Data
 @Table(name = "tb_dependent")
 @EqualsAndHashCode
 public class Dependent {
 
     @Id
+    @Getter
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Getter
+    @Setter
     private String name;
 
+    @Getter
+    @Setter
     private LocalDate dateOfBirth;
 
+    @Getter
+    @Setter
     private String gender;
 
+    @Getter
+    @Setter
     private String parentage;
 
     @Getter
