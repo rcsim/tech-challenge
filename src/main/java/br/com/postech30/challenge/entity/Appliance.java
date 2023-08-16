@@ -13,7 +13,7 @@ public class Appliance {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter
-    private int id;
+    private Long id;
     @Getter
     @Setter
     private String name;
@@ -27,6 +27,14 @@ public class Appliance {
     @Setter
     private String manufacturer;
 
+    @Getter
+    @Setter
+    @ManyToOne
+    @JoinColumn(name = "address_id")
+    private Address address;
 
+    @Getter
+    @Setter
+    private Long userId;
 
 }

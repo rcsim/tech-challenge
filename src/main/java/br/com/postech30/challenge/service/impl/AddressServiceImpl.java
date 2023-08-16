@@ -76,6 +76,7 @@ public class AddressServiceImpl implements AddressService {
         entity.setState(dto.getState());
         entity.setStreet(dto.getStreet());
         entity.setNumber(dto.getNumber());
+        entity.setUserId(dto.getUserId());
         return entity;
     }
 }

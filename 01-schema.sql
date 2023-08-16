@@ -1,4 +1,6 @@
 DROP TABLE IF EXISTS tb_address;
+DROP TABLE IF EXISTS tb_appliance;
+DROP TABLE IF EXISTS tb_dependent;
 
 CREATE DATABASE techchallenge_db;
 
