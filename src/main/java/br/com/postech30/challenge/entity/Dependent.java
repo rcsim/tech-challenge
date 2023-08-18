@@ -1,10 +1,12 @@
 package br.com.postech30.challenge.entity;
 
+import jakarta.persistence.*;
 import lombok.*;
 
-import jakarta.persistence.*;
 import java.time.LocalDate;
 
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -13,34 +15,15 @@ import java.time.LocalDate;
 public class Dependent {
 
     @Id
-    @Getter
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Getter
-    @Setter
     private String name;
-
-    @Getter
-    @Setter
     private LocalDate dateOfBirth;
-
-    @Getter
-    @Setter
     private String gender;
-
-    @Getter
-    @Setter
     private String parentage;
-
-    @Getter
-    @Setter
     @ManyToOne
     @JoinColumn(name = "address_id")
     private Address address;
-
-    @Getter
-    @Setter
     private Long userId;
 
 }
