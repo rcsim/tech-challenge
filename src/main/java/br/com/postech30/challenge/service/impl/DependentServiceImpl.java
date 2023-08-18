@@ -44,9 +44,9 @@ public class DependentServiceImpl implements DependentService {
     @Override
     public DependentDTO update(Long id, DependentDTO dependentDTO) {
         try {
-            Dependent dependentUpdated = new Dependent();
-            dependentUpdated = mapTo(dependentDTO, dependentUpdated);
-            return new DependentDTO(dependentRepository.save(dependentUpdated));
+            Dependent getDependent = dependentRepository.getReferenceById(id);
+            getDependent = mapTo(dependentDTO, getDependent);
+            return new DependentDTO(dependentRepository.save(getDependent));
         } catch (EntityNotFoundException e) {
             throw new ResourceNotFoundException("Dependente não encontrado, id: " + id);
         }
