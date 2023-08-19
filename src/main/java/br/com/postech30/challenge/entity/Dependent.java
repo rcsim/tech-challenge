@@ -4,6 +4,8 @@ import lombok.*;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -42,5 +44,12 @@ public class Dependent {
     @Getter
     @Setter
     private Long userId;
+
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(name = "tb_dependent_appliance",
+            joinColumns = @JoinColumn(name = "dependent_id"),
+            inverseJoinColumns = @JoinColumn(name = "appliance_id"))
+    private Set<Appliance> applianceSet = new HashSet<>();
+
 
 }
