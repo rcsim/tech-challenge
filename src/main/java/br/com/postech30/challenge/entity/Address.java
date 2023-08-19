@@ -35,11 +35,11 @@ public class Address {
     private String state;
 
     @Getter
-    @OneToMany(mappedBy = "address")
+    @OneToMany(mappedBy = "address", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Appliance> applianceList = new ArrayList<>();
 
     @Getter
-    @OneToMany(mappedBy = "address")
+    @OneToMany(mappedBy = "address", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Dependent> dependentList = new ArrayList<>();
 
     @Getter

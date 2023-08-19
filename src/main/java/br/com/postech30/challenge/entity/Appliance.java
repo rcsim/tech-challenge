@@ -4,6 +4,9 @@ import lombok.*;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -36,5 +39,9 @@ public class Appliance {
     @Getter
     @Setter
     private Long userId;
+
+    @ManyToMany(mappedBy = "applianceSet", cascade = CascadeType.ALL)
+    private Set<Dependent> dependentSet =  new HashSet<>();
+
 
 }
