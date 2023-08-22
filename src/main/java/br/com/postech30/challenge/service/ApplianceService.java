@@ -11,5 +11,5 @@ public interface ApplianceService {
      Page<ApplianceDTO> findAll(PageRequest pageRequest);
 
      ApplianceDTO findById(Long id);
-     void saveAppliance(@Valid ApplianceDTO applianceDTO);
+     ApplianceDTO saveAppliance(ApplianceDTO applianceDTO);
 }

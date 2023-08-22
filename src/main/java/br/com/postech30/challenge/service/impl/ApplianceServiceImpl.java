@@ -41,10 +41,14 @@ public class ApplianceServiceImpl implements ApplianceService {
 //    private AddressRepository addressRepository;
 
     @Override
-    public void saveAppliance(ApplianceDTO applianceDTO) {
-        Appliance appliance = new Appliance();
-        appliance = mapTo(applianceDTO, appliance);
-        repository.save(appliance);
+    public ApplianceDTO saveAppliance(ApplianceDTO applianceDTO) {
+        Appliance applianceEntity = new Appliance();
+        applianceEntity = mapTo(applianceDTO, applianceEntity);
+        return new ApplianceDTO(applianceRepository.save(applianceEntity));
+
+//        Appliance appliance = new Appliance();
+//        appliance = mapTo(applianceDTO, appliance);
+//        repository.save(appliance);
     }
 
     public Appliance mapTo(ApplianceDTO dto, Appliance entity) {
