@@ -9,16 +9,36 @@ import br.com.postech30.challenge.repository.AddressRepository;
 import br.com.postech30.challenge.repository.ApplianceRepository;
 import br.com.postech30.challenge.service.ApplianceService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ApplianceServiceImpl implements ApplianceService {
+    final ApplianceRepository applianceRepository;
+    AddressRepository addressRepository;
+    public ApplianceServiceImpl(ApplianceRepository applianceRepository, AddressRepository addressRepository){
+        this.applianceRepository = applianceRepository;
+        this.addressRepository = addressRepository;
+    }
+    @Override
+    public Page<ApplianceDTO> findAll(PageRequest pageRequest){
+        var appliance = applianceRepository.findAll(pageRequest);
+        return appliance.map(ApplianceDTO::new);
+    }
+
+    @Override
+    public ApplianceDTO findById(Long id) {
+        var appliance = applianceRepository.findById(id).orElseThrow(() -> new
+                ResourceNotFoundException("Eletrodoméstico não encontrado"));
+        return new ApplianceDTO(appliance);
+    }
 
     @Autowired
     private ApplianceRepository repository;
 
-    @Autowired
-    private AddressRepository addressRepository;
+//    @Autowired
+//    private AddressRepository addressRepository;
 
     @Override
     public void saveAppliance(ApplianceDTO applianceDTO) {
