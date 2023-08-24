@@ -3,8 +3,6 @@ package br.com.postech30.challenge.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.LocalDate;
-
 @Getter
 @Setter
 @AllArgsConstructor
@@ -18,7 +16,7 @@ public class Dependent {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private LocalDate dateOfBirth;
+    private String dateOfBirth;
     private String gender;
     private String parentage;
     @ManyToOne

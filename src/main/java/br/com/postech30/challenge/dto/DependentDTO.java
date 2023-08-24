@@ -50,7 +50,7 @@ public class DependentDTO {
     public DependentDTO(Dependent dependent) {
         this.id = dependent.getId();
         this.name = dependent.getName();
-        this.dateOfBirth = dependent.getDateOfBirth();
+        this.dateOfBirth = LocalDate.parse(dependent.getDateOfBirth());
         this.gender = dependent.getGender();
         this.parentage = dependent.getParentage();
         this.addressId = dependent.getAddress().getId();
