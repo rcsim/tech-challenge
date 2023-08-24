@@ -49,7 +49,7 @@ public class DependentController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity delete(@PathVariable Long id) {
+    public ResponseEntity<String> delete(@PathVariable Long id) {
         dependentService.delete(id);
         return ResponseEntity.status(HttpStatus.OK).body("Dependente excluído!");
     }

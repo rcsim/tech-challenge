@@ -2,7 +2,7 @@ FROM maven:latest AS MAVEN_BUILD
 COPY ./ ./
 RUN mvn clean package
 
-FROM openjdk:17-alpine as builder
+FROM openjdk:17-alpine AS builder
 COPY --from=MAVEN_BUILD target/*.jar application.jar
 RUN java -Djarmode=layertools -jar application.jar extract
 

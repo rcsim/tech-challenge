@@ -1,8 +1,6 @@
 package br.com.postech30.challenge.service.impl;
 
-import br.com.postech30.challenge.dto.AddressDTO;
 import br.com.postech30.challenge.dto.ApplianceDTO;
-import br.com.postech30.challenge.entity.Address;
 import br.com.postech30.challenge.entity.Appliance;
 import br.com.postech30.challenge.exceptions.ResourceNotFoundException;
 import br.com.postech30.challenge.repository.AddressRepository;
