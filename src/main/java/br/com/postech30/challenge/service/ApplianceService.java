@@ -12,4 +12,8 @@ public interface ApplianceService {
 
      ApplianceDTO findById(Long id);
      ApplianceDTO saveAppliance(ApplianceDTO applianceDTO);
+
+     ApplianceDTO upDate(Long id, ApplianceDTO applianceDTO);
+
+     void  delete(Long id);
 }
