@@ -12,4 +12,7 @@ public interface ApplianceRepository extends JpaRepository<Appliance,Integer> {
     Appliance save(Appliance appliance);
 
     List<Appliance> findByAddress_Id(Long id);
+
+    List<Appliance> findByNameIgnoreCaseContainingOrModelIgnoreCaseContainingOrPowerIgnoreCaseContainingOrManufacturerIgnoreCaseContaining(String name, String model, String power, String manufacturer);
+
 }
