@@ -15,19 +15,19 @@ services:
     networks:
       - my-networks
 
-  app:
-    depends_on:
-      - db
-    build: .
-    environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/techChallenge_db
-      - SPRING_DATASOURCE_USERNAME=user
-      - SPRING_DATASOURCE_PASSWORD=macapple
-      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
-    ports:
-      - '8081:8081'
-    networks:
-      - my-networks
+#  app:
+#    depends_on:
+#      - db
+#    build: .
+#    environment:
+#      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/techChallenge_db
+#      - SPRING_DATASOURCE_USERNAME=user
+#      - SPRING_DATASOURCE_PASSWORD=macapple
+#      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+#    ports:
+#      - '8081:8081'
+#    networks:
+#      - my-networks
 
 networks:
   my-networks:

@@ -2,9 +2,9 @@ DROP TABLE IF EXISTS tb_address;
 DROP TABLE IF EXISTS tb_appliance;
 DROP TABLE IF EXISTS tb_dependent;
 
-CREATE DATABASE techchallenge_db;
+CREATE DATABASE techChallenge_db;
 
-\c techchallenge_db;
+\c techChallenge_db;
 
 CREATE TABLE "tb_address" (
                            "id" SERIAL PRIMARY KEY,
