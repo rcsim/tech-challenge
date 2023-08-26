@@ -1,9 +1,12 @@
 package br.com.postech30.challenge.service.impl;
 
 import br.com.postech30.challenge.dto.AddressDTO;
+import br.com.postech30.challenge.dto.DependentDTO;
 import br.com.postech30.challenge.entity.Address;
+import br.com.postech30.challenge.entity.Dependent;
 import br.com.postech30.challenge.exceptions.ResourceNotFoundException;
 import br.com.postech30.challenge.repository.AddressRepository;
+import br.com.postech30.challenge.repository.DependentRepository;
 import br.com.postech30.challenge.service.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,13 +15,16 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 @Service
 public class AddressServiceImpl implements AddressService {
 
     @Autowired
     private AddressRepository repository;
+    @Autowired
+    DependentRepository dependentRepository;
+
+    static final String RESPONSEENDERECONAOENCONTRADO = "Endereço não encontrado";
     @Override
     @Transactional
     public void saveAddress(AddressDTO addressDTO) {
@@ -36,14 +42,22 @@ public class AddressServiceImpl implements AddressService {
         } else {
             list = repository.findByStreetIgnoreCaseContainingOrDistrictIgnoreCaseContainingOrCityIgnoreCaseContainingOrStateIgnoreCaseContaining(text, text, text, text);
         }
-        return list.stream().map(AddressDTO::new).collect(Collectors.toList());
+        return list.stream().map(AddressDTO::new).toList();
+    }
+
+    @Override
+    @Transactional
+    public List<DependentDTO> findByAddressId(Long id) {
+        Address address = repository.getReferenceById(id);
+        List<Dependent> addressDependent = dependentRepository.findByAddress_Id(address.getId());
+        return addressDependent.stream().map(DependentDTO::new).toList();
     }
 
     @Override
     @Transactional(readOnly = true)
     public AddressDTO findById(Long id) {
         Address address = repository.findById(id).orElseThrow(
-                () -> new ResourceNotFoundException("Endereço não encontrado"));
+                () -> new ResourceNotFoundException(RESPONSEENDERECONAOENCONTRADO));
 
         return new AddressDTO(address);
     }
@@ -52,7 +66,7 @@ public class AddressServiceImpl implements AddressService {
     @Transactional(propagation = Propagation.SUPPORTS)
     public void delete(Long id) {
         if (!repository.existsById(id)) {
-            throw new ResourceNotFoundException("Endereço não encontrado");
+            throw new ResourceNotFoundException(RESPONSEENDERECONAOENCONTRADO);
         }
 
         repository.deleteById(id);
@@ -62,7 +76,7 @@ public class AddressServiceImpl implements AddressService {
     @Transactional
     public void update(Long id, AddressDTO addressDTO) {
         if (!repository.existsById(id)) {
-            throw new ResourceNotFoundException("Endereço não encontrado");
+            throw new ResourceNotFoundException(RESPONSEENDERECONAOENCONTRADO);
         }
 
         Address address = repository.getReferenceById(id);

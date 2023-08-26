@@ -1,9 +1,9 @@
 package br.com.postech30.challenge.controller;
 
 import br.com.postech30.challenge.dto.AddressDTO;
+import br.com.postech30.challenge.dto.DependentDTO;
 import br.com.postech30.challenge.service.AddressService;
 import jakarta.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -52,5 +52,11 @@ public class AddressController {
 
         service.update(id, addressDTO);
         return ResponseEntity.status(HttpStatus.OK).body("Endereço atualizado com sucesso!");
+    }
+
+    @GetMapping(value = "{id}/dependents")
+    public ResponseEntity<List<DependentDTO>> findDependentAddress(@PathVariable Long id) {
+        var dependent = service.findByAddressId(id);
+        return ResponseEntity.ok(dependent);
     }
 }

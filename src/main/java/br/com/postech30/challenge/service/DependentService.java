@@ -1,12 +1,12 @@
 package br.com.postech30.challenge.service;
 
 import br.com.postech30.challenge.dto.DependentDTO;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
+
+import java.util.List;
 
 public interface DependentService {
 
-    Page<DependentDTO> findAll(PageRequest pageRequest);
+    List<DependentDTO> search(String search);
 
     DependentDTO findById(Long id);
 

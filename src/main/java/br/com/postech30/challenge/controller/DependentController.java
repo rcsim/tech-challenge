@@ -3,13 +3,13 @@ package br.com.postech30.challenge.controller;
 import br.com.postech30.challenge.dto.DependentDTO;
 import br.com.postech30.challenge.service.DependentService;
 import jakarta.validation.Valid;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "/dependent")
@@ -25,9 +25,8 @@ public class DependentController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<DependentDTO>> findAll(@RequestParam(value = "page", defaultValue = "0") Integer page, @RequestParam(value = "size", defaultValue = "5") Integer size) {
-        PageRequest pageRequest = PageRequest.of(page, size);
-        var dependents = dependentService.findAll(pageRequest);
+    public ResponseEntity<List<DependentDTO>> findAll(@RequestParam(defaultValue = "") String search) {
+        var dependents = dependentService.search(search);
         return ResponseEntity.ok(dependents);
     }
 
@@ -50,7 +49,7 @@ public class DependentController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity delete(@PathVariable Long id) {
+    public ResponseEntity<String> delete(@PathVariable Long id) {
         dependentService.delete(id);
         return ResponseEntity.status(HttpStatus.OK).body("Dependente excluído!");
     }

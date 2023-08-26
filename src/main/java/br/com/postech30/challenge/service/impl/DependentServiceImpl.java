@@ -8,9 +8,12 @@ import br.com.postech30.challenge.repository.DependentRepository;
 import br.com.postech30.challenge.service.DependentService;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.dao.EmptyResultDataAccessException;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.Objects;
 
 @Service
 public class DependentServiceImpl implements DependentService {
@@ -23,18 +26,26 @@ public class DependentServiceImpl implements DependentService {
     }
 
     @Override
-    public Page<DependentDTO> findAll(PageRequest pageRequest) {
-        var dependents = dependentRepository.findAll(pageRequest);
-        return dependents.map(DependentDTO::new);
+    @Transactional(readOnly = true)
+    public List<DependentDTO> search(String text) {
+        List<Dependent> list;
+        if (Objects.equals(text, "")) {
+            list = dependentRepository.findAll();
+        } else {
+            list = dependentRepository.findByNameIgnoreCaseContainingOrDateOfBirthIgnoreCaseContainingOrGenderIgnoreCaseContainingOrParentageIgnoreCaseContaining(text, text, text, text);
+        }
+        return list.stream().map(DependentDTO::new).toList();
     }
 
     @Override
+    @Transactional(readOnly = true)
     public DependentDTO findById(Long id) {
         var dependent = dependentRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Dependente não encontrado"));
         return new DependentDTO(dependent);
     }
 
     @Override
+    @Transactional
     public DependentDTO saveDependent(DependentDTO dependentDTO) {
         Dependent dependentEntity = new Dependent();
         dependentEntity = mapTo(dependentDTO, dependentEntity);
@@ -42,6 +53,7 @@ public class DependentServiceImpl implements DependentService {
     }
 
     @Override
+    @Transactional
     public DependentDTO update(Long id, DependentDTO dependentDTO) {
         try {
             Dependent getDependent = dependentRepository.getReferenceById(id);
@@ -53,6 +65,7 @@ public class DependentServiceImpl implements DependentService {
     }
 
     @Override
+    @Transactional(propagation = Propagation.SUPPORTS)
     public void delete(Long id) {
         try {
             dependentRepository.deleteById(id);
@@ -63,7 +76,7 @@ public class DependentServiceImpl implements DependentService {
 
     public Dependent mapTo(DependentDTO dto, Dependent entity) {
         entity.setName(dto.getName());
-        entity.setDateOfBirth(dto.getDateOfBirth());
+        entity.setDateOfBirth(String.valueOf(dto.getDateOfBirth()));
         entity.setGender(dto.getGender());
         entity.setParentage(dto.getParentage());
         entity.setAddress(addressRepository.findById(dto.getAddressId()).orElseThrow(() -> new ResourceNotFoundException("Não é possível realizar o cadastro em um endereço inexistente")));
