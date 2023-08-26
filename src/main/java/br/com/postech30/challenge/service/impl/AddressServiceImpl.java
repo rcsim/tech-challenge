@@ -1,11 +1,14 @@
 package br.com.postech30.challenge.service.impl;
 
 import br.com.postech30.challenge.dto.AddressDTO;
+import br.com.postech30.challenge.dto.ApplianceDTO;
 import br.com.postech30.challenge.dto.DependentDTO;
 import br.com.postech30.challenge.entity.Address;
+import br.com.postech30.challenge.entity.Appliance;
 import br.com.postech30.challenge.entity.Dependent;
 import br.com.postech30.challenge.exceptions.ResourceNotFoundException;
 import br.com.postech30.challenge.repository.AddressRepository;
+import br.com.postech30.challenge.repository.ApplianceRepository;
 import br.com.postech30.challenge.repository.DependentRepository;
 import br.com.postech30.challenge.service.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +26,8 @@ public class AddressServiceImpl implements AddressService {
     private AddressRepository repository;
     @Autowired
     DependentRepository dependentRepository;
+    @Autowired
+    ApplianceRepository applianceRepository;
 
     static final String RESPONSEENDERECONAOENCONTRADO = "Endereço não encontrado";
     @Override
@@ -47,10 +52,18 @@ public class AddressServiceImpl implements AddressService {
 
     @Override
     @Transactional
-    public List<DependentDTO> findByAddressId(Long id) {
+    public List<DependentDTO> findDependentByAddressId(Long id) {
         Address address = repository.getReferenceById(id);
         List<Dependent> addressDependent = dependentRepository.findByAddress_Id(address.getId());
         return addressDependent.stream().map(DependentDTO::new).toList();
+    }
+
+    @Override
+    @Transactional
+    public List<ApplianceDTO> findApplianceByAddressId(Long id) {
+        Address address = repository.getReferenceById(id);
+        List<Appliance> addressAppliance =applianceRepository.findByAddress_Id(address.getId());
+        return addressAppliance.stream().map(ApplianceDTO::new).toList();
     }
 
     @Override

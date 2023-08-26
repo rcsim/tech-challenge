@@ -37,11 +37,11 @@ public class ApplianceDTO {
 
     @JsonProperty
     @Getter
-    @NotNull(message = "O endereço precisa estar associado a um endereço")
+    @NotNull(message = "O eletrodoméstico precisa estar associado a um endereço")
     private Long addressId;
     @JsonProperty
     @Getter
-    @NotNull(message = "O endereço precisa estar associado a um usuário")
+    @NotNull(message = "O eletrodoméstico precisa estar associado a um usuário")
     private Long userId;
 
     public ApplianceDTO(Appliance entity) {

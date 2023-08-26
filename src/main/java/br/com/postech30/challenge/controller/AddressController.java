@@ -1,6 +1,7 @@
 package br.com.postech30.challenge.controller;
 
 import br.com.postech30.challenge.dto.AddressDTO;
+import br.com.postech30.challenge.dto.ApplianceDTO;
 import br.com.postech30.challenge.dto.DependentDTO;
 import br.com.postech30.challenge.service.AddressService;
 import jakarta.validation.Valid;
@@ -56,7 +57,13 @@ public class AddressController {
 
     @GetMapping(value = "{id}/dependents")
     public ResponseEntity<List<DependentDTO>> findDependentAddress(@PathVariable Long id) {
-        var dependent = service.findByAddressId(id);
+        var dependent = service.findDependentByAddressId(id);
         return ResponseEntity.ok(dependent);
+    }
+
+    @GetMapping(value = "{id}/appliances")
+    public ResponseEntity<List<ApplianceDTO>> findAppliancesAddress(@PathVariable Long id) {
+        var appliance = service.findApplianceByAddressId(id);
+        return ResponseEntity.ok(appliance);
     }
 }
