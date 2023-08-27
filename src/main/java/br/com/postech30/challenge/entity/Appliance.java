@@ -1,8 +1,7 @@
 package br.com.postech30.challenge.entity;
 
-import lombok.*;
-
 import jakarta.persistence.*;
+import lombok.*;
 
 import java.util.HashSet;
 import java.util.Set;
