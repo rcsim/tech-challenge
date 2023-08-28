@@ -47,6 +47,13 @@ public class ApplianceController {
         return ResponseEntity.ok(appliance);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<ApplianceDTO> upDate(@PathVariable Long id, @RequestBody ApplianceDTO applianceDTO) {
+        var applianceUpDate = applianceService.upDate(id, applianceDTO);
+        return ResponseEntity.ok(applianceUpDate);
+    }
+
+
 //    @Autowired
 //    ApplianceService service;
 
