@@ -27,18 +27,24 @@ public class ApplianceController {
         this.applianceService = applianceService;
     }
 
+    @PostMapping
+    public ResponseEntity<ApplianceDTO> save(@RequestBody @Valid ApplianceDTO applianceDTO) {
+        var applianceSave = applianceService.saveAppliance(applianceDTO);
+        return ResponseEntity.ok(applianceSave);
+    }
+
     @GetMapping
-    public ResponseEntity<Page<ApplianceDTO>> findAll(@RequestParam(value = "page", defaultValue = "0")
-                                                      Integer page,@RequestParam(value = "size", defaultValue = "5")
-                                                      Integer size) {
+    public ResponseEntity<Page<ApplianceDTO>> findAll(@RequestParam(value = "page", defaultValue = "0") Integer page,
+                                                      @RequestParam(value = "size", defaultValue = "5") Integer size) {
         PageRequest pageRequest = PageRequest.of(page, size);
         var appliance = applianceService.findAll(pageRequest);
         return ResponseEntity.ok(appliance);
     }
 
-    public ResponseEntity<ApplianceDTO> save(@RequestBody @Valid ApplianceDTO applianceDTO) {
-        var applianceSave = applianceService.saveAppliance(applianceDTO);
-        return ResponseEntity.ok(applianceSave);
+    @GetMapping("/{id}")
+    public ResponseEntity<ApplianceDTO> findById(@PathVariable Long id) {
+        var appliance = applianceService.findById(id);
+        return ResponseEntity.ok(appliance);
     }
 
 //    @Autowired
