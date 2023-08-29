@@ -28,40 +28,37 @@ public class ApplianceController {
     }
 
     @PostMapping
-    public ResponseEntity<ApplianceDTO> save(@RequestBody @Valid ApplianceDTO applianceDTO) {
+    public ResponseEntity<ApplianceDTO> saveAppliance(@RequestBody @Valid ApplianceDTO applianceDTO) {
         var applianceSave = applianceService.saveAppliance(applianceDTO);
         return ResponseEntity.ok(applianceSave);
     }
 
     @GetMapping
-    public ResponseEntity<Page<ApplianceDTO>> findAll(@RequestParam(value = "page", defaultValue = "0") Integer page,
+    public ResponseEntity<Page<ApplianceDTO>> findAllAppliance(@RequestParam(value = "page", defaultValue = "0") Integer page,
                                                       @RequestParam(value = "size", defaultValue = "5") Integer size) {
         PageRequest pageRequest = PageRequest.of(page, size);
         var appliance = applianceService.findAll(pageRequest);
         return ResponseEntity.ok(appliance);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<ApplianceDTO> findById(@PathVariable Long id) {
+    @GetMapping("/appliance/{id}")
+    public ResponseEntity<ApplianceDTO> findByIdAppliance(@PathVariable Long id) {
         var appliance = applianceService.findById(id);
         return ResponseEntity.ok(appliance);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<ApplianceDTO> upDate(@PathVariable Long id, @RequestBody ApplianceDTO applianceDTO) {
+    @PutMapping("/appliance/{id}")
+    public ResponseEntity<ApplianceDTO> upDateAppliance(@PathVariable Long id,
+                                                        @RequestBody @Valid ApplianceDTO applianceDTO) {
         var applianceUpDate = applianceService.upDate(id, applianceDTO);
         return ResponseEntity.ok(applianceUpDate);
     }
 
-
-//    @Autowired
-//    ApplianceService service;
-
-//    @PostMapping()
-//    public ResponseEntity addAppliance(@RequestBody @Valid ApplianceDTO appliance){
-//
-//        service.saveAppliance(appliance);
-//        return ResponseEntity.status(HttpStatus.CREATED).body("Eletrodoméstico cadastrado com sucesso!");
-//    }
+    @DeleteMapping("/appliance/{id}")
+    public ResponseEntity deleteAppliance(@PathVariable Long id) {
+        applianceService.delete(id);
+        return ResponseEntity.status(HttpStatus.OK)
+                .body("Eletrodoméstico deletado com sucesso.");
+    }
 
 }
