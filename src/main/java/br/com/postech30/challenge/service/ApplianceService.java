@@ -8,12 +8,12 @@ import org.springframework.data.domain.PageRequest;
 
 public interface ApplianceService {
 
-     Page<ApplianceDTO> findAll(PageRequest pageRequest);
+     Page<ApplianceDTO> findAllAppliance(PageRequest pageRequest);
 
-     ApplianceDTO findById(Long id);
+     ApplianceDTO findByIdAppliance(Long id);
      ApplianceDTO saveAppliance(ApplianceDTO applianceDTO);
 
-     ApplianceDTO upDate(Long id, ApplianceDTO applianceDTO);
+     ApplianceDTO upDateAppliance(Long id, ApplianceDTO applianceDTO);
 
-     void  delete(Long id);
+     void  deleteAppliance(Long id);
 }

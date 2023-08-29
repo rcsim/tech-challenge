@@ -37,26 +37,26 @@ public class ApplianceController {
     public ResponseEntity<Page<ApplianceDTO>> findAllAppliance(@RequestParam(value = "page", defaultValue = "0") Integer page,
                                                       @RequestParam(value = "size", defaultValue = "5") Integer size) {
         PageRequest pageRequest = PageRequest.of(page, size);
-        var appliance = applianceService.findAll(pageRequest);
+        var appliance = applianceService.findAllAppliance(pageRequest);
         return ResponseEntity.ok(appliance);
     }
 
     @GetMapping("/appliance/{id}")
     public ResponseEntity<ApplianceDTO> findByIdAppliance(@PathVariable Long id) {
-        var appliance = applianceService.findById(id);
+        var appliance = applianceService.findByIdAppliance(id);
         return ResponseEntity.ok(appliance);
     }
 
     @PutMapping("/appliance/{id}")
     public ResponseEntity<ApplianceDTO> upDateAppliance(@PathVariable Long id,
                                                         @RequestBody @Valid ApplianceDTO applianceDTO) {
-        var applianceUpDate = applianceService.upDate(id, applianceDTO);
+        var applianceUpDate = applianceService.upDateAppliance(id, applianceDTO);
         return ResponseEntity.ok(applianceUpDate);
     }
 
     @DeleteMapping("/appliance/{id}")
     public ResponseEntity deleteAppliance(@PathVariable Long id) {
-        applianceService.delete(id);
+        applianceService.deleteAppliance(id);
         return ResponseEntity.status(HttpStatus.OK)
                 .body("Eletrodoméstico deletado com sucesso.");
     }

@@ -25,14 +25,13 @@ public class ApplianceServiceImpl implements ApplianceService {
         this.addressRepository = addressRepository;
     }
     @Override
-    public Page<ApplianceDTO> findAll(PageRequest pageRequest){
-        var appliance = applianceRepository
-                .findAll(pageRequest);
+    public Page<ApplianceDTO> findAllAppliance(PageRequest pageRequest){
+        var appliance = applianceRepository.findAll(pageRequest);
         return appliance.map(ApplianceDTO::new);
     }
 
     @Override
-    public ApplianceDTO findById(Long id) {
+    public ApplianceDTO findByIdAppliance(Long id) {
         var appliance = applianceRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Eletrodoméstico não encontrado"));
         return new ApplianceDTO(appliance);
@@ -46,7 +45,7 @@ public class ApplianceServiceImpl implements ApplianceService {
     }
 
     @Override
-    public ApplianceDTO upDate(Long id, ApplianceDTO applianceDTO) {
+    public ApplianceDTO upDateAppliance(Long id, ApplianceDTO applianceDTO) {
         try {
             Appliance getApplience = applianceRepository.getReferenceById(id);
             getApplience = mapTo(applianceDTO, getApplience);
@@ -58,7 +57,7 @@ public class ApplianceServiceImpl implements ApplianceService {
     }
 
     @Override
-    public void delete(Long id) {
+    public void deleteAppliance(Long id) {
         try {
             applianceRepository.deleteById(id);
         } catch (EntityNotFoundException e) {
