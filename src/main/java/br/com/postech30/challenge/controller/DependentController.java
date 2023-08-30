@@ -1,5 +1,6 @@
 package br.com.postech30.challenge.controller;
 
+import br.com.postech30.challenge.dto.ApplianceDTO;
 import br.com.postech30.challenge.dto.DependentDTO;
 import br.com.postech30.challenge.service.DependentService;
 import jakarta.validation.Valid;
@@ -54,5 +55,11 @@ public class DependentController {
     public ResponseEntity<String> delete(@PathVariable Long id) {
         dependentService.delete(id);
         return ResponseEntity.status(HttpStatus.OK).body("Dependente excluído!");
+    }
+
+    @GetMapping(value = "{id}/appliances")
+    public ResponseEntity<List<ApplianceDTO>> findApplianceDependent(@PathVariable Long id) {
+        var appliance = dependentService.findApplianceByDependentId(id);
+        return ResponseEntity.ok(appliance);
     }
 }

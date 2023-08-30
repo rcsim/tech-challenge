@@ -14,4 +14,6 @@ public interface DependentRepository extends JpaRepository<Dependent, Long> {
     Page<Dependent> findByNameIgnoreCaseContainingOrDateOfBirthIgnoreCaseContainingOrGenderIgnoreCaseContainingOrParentageIgnoreCaseContaining(String name, String dateOfBirth, String gender, String parentage, Pageable pageable);
 
     List<Dependent> findByAddress_Id(Long id);
+
+    List<Dependent> findByApplianceSet_Id(Long id);
 }

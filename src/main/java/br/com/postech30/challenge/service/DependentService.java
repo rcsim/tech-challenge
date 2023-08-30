@@ -1,5 +1,6 @@
 package br.com.postech30.challenge.service;
 
+import br.com.postech30.challenge.dto.ApplianceDTO;
 import br.com.postech30.challenge.dto.DependentDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -17,5 +18,7 @@ public interface DependentService {
     DependentDTO update(Long id, DependentDTO dependentDTO);
 
     void delete(Long id);
+
+    List<ApplianceDTO> findApplianceByDependentId(Long id);
 
 }
