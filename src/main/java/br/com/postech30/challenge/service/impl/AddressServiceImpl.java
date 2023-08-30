@@ -12,6 +12,8 @@ import br.com.postech30.challenge.repository.ApplianceRepository;
 import br.com.postech30.challenge.repository.DependentRepository;
 import br.com.postech30.challenge.service.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -40,14 +42,14 @@ public class AddressServiceImpl implements AddressService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<AddressDTO> search(String text) {
-        List<Address> list;
+    public Page<AddressDTO> search(String text, Pageable pageable) {
+        Page<Address> page;
         if (Objects.equals(text, "")) {
-            list = repository.findAll();
+            page = repository.findAll(pageable);
         } else {
-            list = repository.findByStreetIgnoreCaseContainingOrDistrictIgnoreCaseContainingOrCityIgnoreCaseContainingOrStateIgnoreCaseContaining(text, text, text, text);
+            page = repository.findByStreetIgnoreCaseContainingOrDistrictIgnoreCaseContainingOrCityIgnoreCaseContainingOrStateIgnoreCaseContaining(text, text, text, text, pageable);
         }
-        return list.stream().map(AddressDTO::new).toList();
+        return page.map(AddressDTO::new);
     }
 
     @Override
