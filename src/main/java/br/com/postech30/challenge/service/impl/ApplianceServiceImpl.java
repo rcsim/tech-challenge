@@ -7,6 +7,8 @@ import br.com.postech30.challenge.repository.AddressRepository;
 import br.com.postech30.challenge.repository.ApplianceRepository;
 import br.com.postech30.challenge.service.ApplianceService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -31,14 +33,14 @@ public class ApplianceServiceImpl implements ApplianceService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<ApplianceDTO> search(String text) {
-        List<Appliance> list;
+    public Page<ApplianceDTO> search(String text, Pageable pageable) {
+        Page<Appliance> page;
         if (Objects.equals(text, "")) {
-            list = repository.findAll();
+            page = repository.findAll(pageable);
         } else {
-            list = repository.findByNameIgnoreCaseContainingOrModelIgnoreCaseContainingOrPowerIgnoreCaseContainingOrManufacturerIgnoreCaseContaining(text, text, text, text);
+            page = repository.findByNameIgnoreCaseContainingOrModelIgnoreCaseContainingOrPowerIgnoreCaseContainingOrManufacturerIgnoreCaseContaining(text, text, text, text, pageable);
         }
-        return list.stream().map(ApplianceDTO::new).toList();
+        return page.map(ApplianceDTO::new);
     }
 
     public Appliance mapTo(ApplianceDTO dto, Appliance entity) {

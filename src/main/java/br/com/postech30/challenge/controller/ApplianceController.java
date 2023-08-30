@@ -5,6 +5,8 @@ import br.com.postech30.challenge.dto.ApplianceDTO;
 import br.com.postech30.challenge.service.ApplianceService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -30,10 +32,10 @@ public class ApplianceController {
     }
 
     @GetMapping
-    public  ResponseEntity<List<ApplianceDTO>> getAppliance(
-            @RequestParam(defaultValue = "") String search) {
+    public  ResponseEntity<Page<ApplianceDTO>> getAppliance(
+            @RequestParam(defaultValue = "") String search, Pageable pageable) {
 
-        List<ApplianceDTO> list = service.search(search);
-        return ResponseEntity.status(HttpStatus.OK).body(list);
+        Page<ApplianceDTO> page = service.search(search, pageable);
+        return ResponseEntity.status(HttpStatus.OK).body(page);
     }
 }

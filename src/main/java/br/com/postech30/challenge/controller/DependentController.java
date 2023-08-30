@@ -3,6 +3,8 @@ package br.com.postech30.challenge.controller;
 import br.com.postech30.challenge.dto.DependentDTO;
 import br.com.postech30.challenge.service.DependentService;
 import jakarta.validation.Valid;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,9 +27,9 @@ public class DependentController {
     }
 
     @GetMapping
-    public ResponseEntity<List<DependentDTO>> findAll(@RequestParam(defaultValue = "") String search) {
-        var dependents = dependentService.search(search);
-        return ResponseEntity.ok(dependents);
+    public ResponseEntity<Page<DependentDTO>> findAll(@RequestParam(defaultValue = "") String search, Pageable pageable) {
+        Page<DependentDTO> page = dependentService.search(search, pageable);
+        return ResponseEntity.status(HttpStatus.OK).body(page);
     }
 
     @GetMapping("/{id}")
