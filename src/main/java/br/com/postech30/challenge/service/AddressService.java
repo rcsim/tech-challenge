@@ -4,6 +4,8 @@ import br.com.postech30.challenge.dto.AddressDTO;
 import br.com.postech30.challenge.dto.ApplianceDTO;
 import br.com.postech30.challenge.dto.DependentDTO;
 import br.com.postech30.challenge.entity.Appliance;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
@@ -17,7 +19,7 @@ public interface AddressService {
 
     void update(Long id, AddressDTO addressDTO);
 
-    List<AddressDTO> search(String search);
+    Page<AddressDTO> search(String search, Pageable pageable);
 
     List<DependentDTO> findDependentByAddressId(Long id);
 

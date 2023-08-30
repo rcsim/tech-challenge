@@ -6,6 +6,8 @@ import br.com.postech30.challenge.dto.DependentDTO;
 import br.com.postech30.challenge.service.AddressService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -27,11 +29,11 @@ public class AddressController {
     }
 
     @GetMapping
-    public  ResponseEntity<List<AddressDTO>> getAddresses(
-            @RequestParam(defaultValue = "") String search) {
+    public  ResponseEntity<Page<AddressDTO>> getAddresses(
+            @RequestParam(defaultValue = "") String search, Pageable pageable)  {
 
-        List<AddressDTO> list = service.search(search);
-        return ResponseEntity.status(HttpStatus.OK).body(list);
+        Page<AddressDTO> page = service.search(search, pageable);
+        return ResponseEntity.status(HttpStatus.OK).body(page);
     }
 
     @GetMapping(value = "{id}")

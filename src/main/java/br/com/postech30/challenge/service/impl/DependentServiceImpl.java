@@ -8,6 +8,8 @@ import br.com.postech30.challenge.repository.DependentRepository;
 import br.com.postech30.challenge.service.DependentService;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,14 +29,14 @@ public class DependentServiceImpl implements DependentService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<DependentDTO> search(String text) {
-        List<Dependent> list;
+    public Page<DependentDTO> search(String text, Pageable pageable) {
+        Page<Dependent> page;
         if (Objects.equals(text, "")) {
-            list = dependentRepository.findAll();
+            page = dependentRepository.findAll(pageable);
         } else {
-            list = dependentRepository.findByNameIgnoreCaseContainingOrDateOfBirthIgnoreCaseContainingOrGenderIgnoreCaseContainingOrParentageIgnoreCaseContaining(text, text, text, text);
+            page = dependentRepository.findByNameIgnoreCaseContainingOrDateOfBirthIgnoreCaseContainingOrGenderIgnoreCaseContainingOrParentageIgnoreCaseContaining(text, text, text, text, pageable);
         }
-        return list.stream().map(DependentDTO::new).toList();
+        return page.map(DependentDTO::new);
     }
 
     @Override
