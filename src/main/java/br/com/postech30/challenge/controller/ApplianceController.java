@@ -2,6 +2,7 @@ package br.com.postech30.challenge.controller;
 
 
 import br.com.postech30.challenge.dto.ApplianceDTO;
+import br.com.postech30.challenge.dto.DependentDTO;
 import br.com.postech30.challenge.service.ApplianceService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,5 +38,11 @@ public class ApplianceController {
 
         Page<ApplianceDTO> page = service.search(search, pageable);
         return ResponseEntity.status(HttpStatus.OK).body(page);
+    }
+
+    @GetMapping(value = "{id}/dependents")
+    public ResponseEntity<List<DependentDTO>> findApplianceDependent(@PathVariable Long id) {
+        var dependent = service.findDependentByApplianceId(id);
+        return ResponseEntity.ok(dependent);
     }
 }

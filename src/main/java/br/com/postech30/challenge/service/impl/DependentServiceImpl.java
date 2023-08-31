@@ -1,9 +1,12 @@
 package br.com.postech30.challenge.service.impl;
 
+import br.com.postech30.challenge.dto.ApplianceDTO;
 import br.com.postech30.challenge.dto.DependentDTO;
+import br.com.postech30.challenge.entity.Appliance;
 import br.com.postech30.challenge.entity.Dependent;
 import br.com.postech30.challenge.exceptions.ResourceNotFoundException;
 import br.com.postech30.challenge.repository.AddressRepository;
+import br.com.postech30.challenge.repository.ApplianceRepository;
 import br.com.postech30.challenge.repository.DependentRepository;
 import br.com.postech30.challenge.service.DependentService;
 import jakarta.persistence.EntityNotFoundException;
@@ -22,9 +25,12 @@ public class DependentServiceImpl implements DependentService {
     final DependentRepository dependentRepository;
     AddressRepository addressRepository;
 
-    public DependentServiceImpl(DependentRepository dependentRepository, AddressRepository addressRepository) {
+    ApplianceRepository applianceRepository;
+
+    public DependentServiceImpl(DependentRepository dependentRepository, AddressRepository addressRepository, ApplianceRepository applianceRepository) {
         this.dependentRepository = dependentRepository;
         this.addressRepository = addressRepository;
+        this.applianceRepository = applianceRepository;
     }
 
     @Override
@@ -74,6 +80,14 @@ public class DependentServiceImpl implements DependentService {
         } catch (EmptyResultDataAccessException e) {
             throw new ResourceNotFoundException("Nenhum dependente encontrado com o id: " + id);
         }
+    }
+
+    @Override
+    @Transactional
+    public List<ApplianceDTO> findApplianceByDependentId(Long id) {
+        Dependent dependent = dependentRepository.getReferenceById(id);
+        List<Appliance> dependentAppliance = applianceRepository.findByDependentSet_Id(dependent.getId());
+        return dependentAppliance.stream().map(ApplianceDTO::new).toList();
     }
 
     public Dependent mapTo(DependentDTO dto, Dependent entity) {

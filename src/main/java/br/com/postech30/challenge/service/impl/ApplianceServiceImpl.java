@@ -1,10 +1,14 @@
 package br.com.postech30.challenge.service.impl;
 
 import br.com.postech30.challenge.dto.ApplianceDTO;
+import br.com.postech30.challenge.dto.DependentDTO;
+import br.com.postech30.challenge.entity.Address;
 import br.com.postech30.challenge.entity.Appliance;
+import br.com.postech30.challenge.entity.Dependent;
 import br.com.postech30.challenge.exceptions.ResourceNotFoundException;
 import br.com.postech30.challenge.repository.AddressRepository;
 import br.com.postech30.challenge.repository.ApplianceRepository;
+import br.com.postech30.challenge.repository.DependentRepository;
 import br.com.postech30.challenge.service.ApplianceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -24,6 +28,9 @@ public class ApplianceServiceImpl implements ApplianceService {
     @Autowired
     private AddressRepository addressRepository;
 
+    @Autowired
+    private DependentRepository dependentRepository;
+
     @Override
     public void saveAppliance(ApplianceDTO applianceDTO) {
         Appliance appliance = new Appliance();
@@ -41,6 +48,14 @@ public class ApplianceServiceImpl implements ApplianceService {
             page = repository.findByNameIgnoreCaseContainingOrModelIgnoreCaseContainingOrPowerIgnoreCaseContainingOrManufacturerIgnoreCaseContaining(text, text, text, text, pageable);
         }
         return page.map(ApplianceDTO::new);
+    }
+
+    @Override
+    @Transactional
+    public List<DependentDTO> findDependentByApplianceId(Long id) {
+        Appliance appliance = repository.getReferenceById(id);
+        List<Dependent> applianceDependent = dependentRepository.findByApplianceSet_Id(appliance.getId());
+        return applianceDependent.stream().map(DependentDTO::new).toList();
     }
 
     public Appliance mapTo(ApplianceDTO dto, Appliance entity) {
