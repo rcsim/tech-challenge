@@ -49,6 +49,23 @@ Nesta fase adicionamos a possibilidade de geração automática da documentaçã
 ![image](https://github.com/rcsim/tech-challenge/assets/30301531/e4481bca-5476-4f70-9ddf-b851b085eb27)
 
 
+**Docker**
+
+Nesta fase foi adicionado a possibilidade de utilização de containers através do Docker-Compose. Criamos um container para aplicação e outro para o banco de dados e uma rede no modo bridge para ter acesso ao containers via localhost:
+
+https://github.com/rcsim/tech-challenge/blob/0fcd8e3b718870e622972ce1b11d62cb7c5bbd81/docker-compose.yml#L1-L33
+
+Também adicionamos o arquivo Dockerfile que gerencia o processo de build da aplicação através do Maven e JDK, já inicializando a aplicação:
+
+https://github.com/rcsim/tech-challenge/blob/0fcd8e3b718870e622972ce1b11d62cb7c5bbd81/Dockerfile#L1-L15
+
+Para criação dos container, compilar e rodar a applicação é necessário apenas o comando:
+
+docker-compose up -d
+
+![image](https://github.com/rcsim/tech-challenge/assets/30301531/4d4e76fe-c1eb-40f9-afd9-7b71e9a3bc99)
+
+
 
 ### 2- Documentação API
 #### ---- INSTÂNCIA DE ENTIDADES PARA BD EM MEMÓRIA ----
