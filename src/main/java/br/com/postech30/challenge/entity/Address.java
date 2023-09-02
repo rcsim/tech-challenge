@@ -6,6 +6,8 @@ import lombok.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -15,23 +17,18 @@ public class Address {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter
+
     private Long id;
-    @Getter
-    @Setter
+
     @Column(columnDefinition = "TEXT")
     private String street;
-    @Getter
-    @Setter
+
     private String number;
-    @Getter
-    @Setter
+
     private String district;
-    @Getter
-    @Setter
+
     private String city;
-    @Getter
-    @Setter
+
     private String state;
 
     @Getter
@@ -42,8 +39,6 @@ public class Address {
     @OneToMany(mappedBy = "address", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Dependent> dependentList = new ArrayList<>();
 
-    @Getter
-    @Setter
     private Long userId;
 
 }

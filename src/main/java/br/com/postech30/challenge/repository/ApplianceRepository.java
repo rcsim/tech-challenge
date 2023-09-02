@@ -10,7 +10,7 @@ import java.util.List;
 
 @Repository
 public interface ApplianceRepository extends JpaRepository<Appliance, Long> {
-    Appliance save(Appliance appliance);
+   // Appliance save(Appliance appliance);
 
     List<Appliance> findByAddress_Id(Long id);
 

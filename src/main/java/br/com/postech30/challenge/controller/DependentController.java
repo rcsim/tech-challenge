@@ -4,6 +4,7 @@ import br.com.postech30.challenge.dto.ApplianceDTO;
 import br.com.postech30.challenge.dto.DependentDTO;
 import br.com.postech30.challenge.service.DependentService;
 import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -20,8 +21,8 @@ import java.util.List;
 @Transactional
 public class DependentController {
 
+    @Autowired
     private final DependentService dependentService;
-
 
     public DependentController(DependentService dependentService) {
         this.dependentService = dependentService;
@@ -42,7 +43,7 @@ public class DependentController {
     @PostMapping
     public ResponseEntity<DependentDTO> save(@RequestBody @Valid DependentDTO dependentDTO) {
         var dependentSaved = dependentService.saveDependent(dependentDTO);
-        return ResponseEntity.ok(dependentSaved);
+        return ResponseEntity.status(HttpStatus.CREATED).body(dependentSaved);
     }
 
     @PutMapping("/{id}")
