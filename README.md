@@ -42,6 +42,14 @@ https://github.com/rcsim/tech-challenge/blob/0fcd8e3b718870e622972ce1b11d62cb7c5
 Configuração do PostgreSQL:
 https://github.com/rcsim/tech-challenge/blob/0fcd8e3b718870e622972ce1b11d62cb7c5bbd81/src/main/resources/application-dev.properties#L1-L7
 
+Nesta fase adicionamos a possibilidade de geração automática da documentação através da biblioteca SpringDoc OpenAPI, a documentação pode ser acessada enquanto a aplicação estiver rodando em http://localhost:8080/swagger-ui/index.html#/:
+
+![image](https://github.com/rcsim/tech-challenge/assets/30301531/8191e3fc-2f0e-48ab-b655-44bd53532209)
+![image](https://github.com/rcsim/tech-challenge/assets/30301531/297ffdc8-967a-4218-84b9-81c87a4c5bec)
+![image](https://github.com/rcsim/tech-challenge/assets/30301531/e4481bca-5476-4f70-9ddf-b851b085eb27)
+
+
+
 ### 2- Documentação API
 #### ---- INSTÂNCIA DE ENTIDADES PARA BD EM MEMÓRIA ----
 
