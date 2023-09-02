@@ -1,7 +1,7 @@
 # tech-challenge
 ## Repositório para o Tech Challenge - Grupo 30
 
-### 1- Relatório Técnico - Grupo 30
+### 1.1- Relatório Técnico - Grupo 30 - Fase 1
 Inicialmente foram definidas as versões que seriam utilizadas no projeto:
 + Maven
 +  Java 11
@@ -23,7 +23,24 @@ Essas tecnologias e ferramentas contribuíram para o desenvolvimento eficiente e
 A principal dificultade encontrada foi a necessidade de se realizar algumas refatorações afim de padronizar o código das 3 APIs, já que estavam significativamente diferentes em seu formato devido as preferências individuais de cada desenvolverdor.
 
 
+### 1.2- Relatório Técnico - Grupo 30 - Fase 2
 
+No início da fase 02 decidimos atualizar a versão do Java e Spring Boot para termos a possibilidade de utilizarmos novas funcionalidades da linguagem:
++  Java 17
++  Spring Boot 3.1.2
+
+Além das bibliotecas já utilizadas na fase 1, adicionamos também as bibliotecas abaixo:
++  PostgreSQL
++  SpringDoc OpenAPI Starter WebMVC UI
+
+Na fase 1 utilizamos um banco de dados em memória (H2 Database), nesta fase adicionamos a possibilidade de conectar a aplicação a um banco de dados real utilizando a biblioteca do PostgreSQL. A configuração para a aplicação conectar-se no H2 ou PostgreSQL deve ser feita no arquivo application.properties, onde deve ser definido qual profile a aplicação vai rodar, test para rodar o banco em memória H2 ou dev para rodar o banco PostgreSQL:
+https://github.com/rcsim/tech-challenge/blob/0fcd8e3b718870e622972ce1b11d62cb7c5bbd81/src/main/resources/application.properties#L1 
+
+Configuração do H2:
+https://github.com/rcsim/tech-challenge/blob/0fcd8e3b718870e622972ce1b11d62cb7c5bbd81/src/main/resources/application-test.properties#L1-L15
+
+Configuração do PostgreSQL:
+https://github.com/rcsim/tech-challenge/blob/0fcd8e3b718870e622972ce1b11d62cb7c5bbd81/src/main/resources/application-dev.properties#L1-L7
 
 ### 2- Documentação API
 #### ---- INSTÂNCIA DE ENTIDADES PARA BD EM MEMÓRIA ----
