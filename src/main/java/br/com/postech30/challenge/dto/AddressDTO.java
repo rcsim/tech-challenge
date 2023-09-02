@@ -7,35 +7,37 @@ import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class AddressDTO {
-    @Getter
+
     private Long id;
+
     @JsonProperty
-    @Getter
     @NotBlank(message = "A rua é um campo de preenchimento obrigatório")
     private String street;
+
     @JsonProperty
-    @Getter
     @NotBlank(message = "O número é um campo de preenchimento obrigatório")
     private String number;
+
     @JsonProperty
-    @Getter
     @NotBlank(message = "O bairro é um campo de preenchimento obrigatório")
     private String district;
+
     @JsonProperty
-    @Getter
     @NotBlank(message = "A cidade é um campo de preenchimento obrigatório")
     private String city;
+
     @JsonProperty
-    @Getter
     @NotBlank(message = "O estado é um campo de preenchimento obrigatório")
     private String state;
 
     @JsonProperty
-    @Getter
     @NotNull(message = "O endereço precisa estar associado a um usuário")
     private Long userId;
 

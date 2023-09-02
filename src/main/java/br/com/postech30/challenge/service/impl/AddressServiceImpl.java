@@ -25,7 +25,7 @@ import java.util.Objects;
 public class AddressServiceImpl implements AddressService {
 
     @Autowired
-    private AddressRepository repository;
+    private AddressRepository addressRepository;
     @Autowired
     DependentRepository dependentRepository;
     @Autowired
@@ -34,20 +34,21 @@ public class AddressServiceImpl implements AddressService {
     static final String RESPONSEENDERECONAOENCONTRADO = "Endereço não encontrado";
     @Override
     @Transactional
-    public void saveAddress(AddressDTO addressDTO) {
-        Address address = new Address();
-        address = mapTo(addressDTO, address);
-        repository.save(address);
+    public AddressDTO saveAddress(AddressDTO addressDTO) {
+        Address addressEntity = new Address();
+        addressEntity = mapTo(addressDTO, addressEntity);
+        return new AddressDTO(addressRepository.save(addressEntity));
     }
+
 
     @Override
     @Transactional(readOnly = true)
     public Page<AddressDTO> search(String text, Pageable pageable) {
         Page<Address> page;
         if (Objects.equals(text, "")) {
-            page = repository.findAll(pageable);
+            page = addressRepository.findAll(pageable);
         } else {
-            page = repository.findByStreetIgnoreCaseContainingOrDistrictIgnoreCaseContainingOrCityIgnoreCaseContainingOrStateIgnoreCaseContaining(text, text, text, text, pageable);
+            page = addressRepository.findByStreetIgnoreCaseContainingOrDistrictIgnoreCaseContainingOrCityIgnoreCaseContainingOrStateIgnoreCaseContaining(text, text, text, text, pageable);
         }
         return page.map(AddressDTO::new);
     }
@@ -55,7 +56,7 @@ public class AddressServiceImpl implements AddressService {
     @Override
     @Transactional
     public List<DependentDTO> findDependentByAddressId(Long id) {
-        Address address = repository.getReferenceById(id);
+        Address address = addressRepository.getReferenceById(id);
         List<Dependent> addressDependent = dependentRepository.findByAddress_Id(address.getId());
         return addressDependent.stream().map(DependentDTO::new).toList();
     }
@@ -63,7 +64,7 @@ public class AddressServiceImpl implements AddressService {
     @Override
     @Transactional
     public List<ApplianceDTO> findApplianceByAddressId(Long id) {
-        Address address = repository.getReferenceById(id);
+        Address address = addressRepository.getReferenceById(id);
         List<Appliance> addressAppliance =applianceRepository.findByAddress_Id(address.getId());
         return addressAppliance.stream().map(ApplianceDTO::new).toList();
     }
@@ -71,7 +72,7 @@ public class AddressServiceImpl implements AddressService {
     @Override
     @Transactional(readOnly = true)
     public AddressDTO findById(Long id) {
-        Address address = repository.findById(id).orElseThrow(
+        Address address = addressRepository.findById(id).orElseThrow(
                 () -> new ResourceNotFoundException(RESPONSEENDERECONAOENCONTRADO));
 
         return new AddressDTO(address);
@@ -80,23 +81,23 @@ public class AddressServiceImpl implements AddressService {
     @Override
     @Transactional(propagation = Propagation.SUPPORTS)
     public void delete(Long id) {
-        if (!repository.existsById(id)) {
+        if (!addressRepository.existsById(id)) {
             throw new ResourceNotFoundException(RESPONSEENDERECONAOENCONTRADO);
         }
 
-        repository.deleteById(id);
+        addressRepository.deleteById(id);
     }
 
     @Override
     @Transactional
     public void update(Long id, AddressDTO addressDTO) {
-        if (!repository.existsById(id)) {
+        if (!addressRepository.existsById(id)) {
             throw new ResourceNotFoundException(RESPONSEENDERECONAOENCONTRADO);
         }
 
-        Address address = repository.getReferenceById(id);
+        Address address = addressRepository.getReferenceById(id);
         address = mapTo(addressDTO, address);
-        repository.save(address);
+        addressRepository.save(address);
     }
 
     public Address mapTo(AddressDTO dto, Address entity) {

@@ -18,10 +18,10 @@ import org.springframework.validation.annotation.Validated;
 
 
 
-@Validated
-@Transactional
 @RestController
 @RequestMapping(value = "/appliance")
+@Validated
+@Transactional
 public class ApplianceController {
 
     @Autowired
@@ -34,7 +34,7 @@ public class ApplianceController {
     @PostMapping
     public ResponseEntity<ApplianceDTO> saveAppliance(@RequestBody @Valid ApplianceDTO applianceDTO) {
         var applianceSave = applianceService.saveAppliance(applianceDTO);
-        return ResponseEntity.ok(applianceSave);
+        return ResponseEntity.status(HttpStatus.CREATED).body(applianceSave);
     }
 
 

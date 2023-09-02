@@ -67,6 +67,7 @@ public class ApplianceServiceImpl implements ApplianceService {
     }
 
     @Override
+    @Transactional
     public ApplianceDTO saveAppliance(ApplianceDTO applianceDTO){
         Appliance applianceEntity = new Appliance();
         applianceEntity = mapTo(applianceDTO, applianceEntity);
@@ -74,6 +75,7 @@ public class ApplianceServiceImpl implements ApplianceService {
     }
 
     @Override
+    @Transactional
     public ApplianceDTO upDateAppliance(Long id, ApplianceDTO applianceDTO) {
         try {
             Appliance getApplience = applianceRepository.getReferenceById(id);
@@ -86,6 +88,7 @@ public class ApplianceServiceImpl implements ApplianceService {
     }
 
     @Override
+    @Transactional
     public void deleteAppliance(Long id) {
         try {
             applianceRepository.deleteById(id);

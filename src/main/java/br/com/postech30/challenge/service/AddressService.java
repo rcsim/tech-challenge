@@ -11,7 +11,7 @@ import java.util.List;
 
 public interface AddressService {
 
-    void saveAddress(AddressDTO addressDTO);
+    AddressDTO saveAddress(AddressDTO addressDTO);
 
     AddressDTO findById(Long id);
 

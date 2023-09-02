@@ -10,7 +10,7 @@ import java.util.List;
 
 @Repository
 public interface AddressRepository extends JpaRepository<Address, Long> {
-    Address save(Address address);
+    //Address save(Address address);
 
     Page<Address> findByStreetIgnoreCaseContainingOrDistrictIgnoreCaseContainingOrCityIgnoreCaseContainingOrStateIgnoreCaseContaining(String street, String district, String city, String state, Pageable pageable);
 }
