@@ -48,7 +48,6 @@ Nesta fase adicionamos a possibilidade de geração automática da documentaçã
 ![image](https://github.com/rcsim/tech-challenge/assets/30301531/297ffdc8-967a-4218-84b9-81c87a4c5bec)
 ![image](https://github.com/rcsim/tech-challenge/assets/30301531/e4481bca-5476-4f70-9ddf-b851b085eb27)
 
-
 **Docker**
 
 Nesta fase foi adicionado a possibilidade de utilização de containers através do Docker-Compose. Criamos um container para aplicação e outro para o banco de dados e uma rede no modo bridge para ter acesso ao containers via localhost:
@@ -73,14 +72,18 @@ https://github.com/rcsim/tech-challenge/blob/7eda16eec709df6d1ad3b58cea2d7e4788a
 https://github.com/rcsim/tech-challenge/blob/7eda16eec709df6d1ad3b58cea2d7e4788a03ff4/02-seed.sql#L1-L38
 Os dados de seeding são fictícios e foram gerados em https://www.4devs.com.br/
 
-
 ### 2- Documentação API
-#### ---- INSTÂNCIA DE ENTIDADES PARA BD EM MEMÓRIA ----
 
-<img src = "./image/createdTable.png" />
+Opção 1: 
+É possível verificar a documentação da API e exemplos via Postman em https://documenter.getpostman.com/view/17475893/2s9Y5eLyN7.
 
-<img src = "./image/createdTable_H2console.png" />
+![image](https://github.com/rcsim/tech-challenge/assets/30301531/093ddbcd-b1b3-4098-ae82-078ea618e8ca)
 
+Opção 2:
+Rodar a aplicação e acessar http://localhost:8080/swagger-ui/index.html#/
+
+Opção 3: 
+Verificar o documentação abaixo:
 
 #### ---- DEPENDENTES ----
 
