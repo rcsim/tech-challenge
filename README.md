@@ -72,6 +72,11 @@ https://github.com/rcsim/tech-challenge/blob/7eda16eec709df6d1ad3b58cea2d7e4788a
 https://github.com/rcsim/tech-challenge/blob/7eda16eec709df6d1ad3b58cea2d7e4788a03ff4/02-seed.sql#L1-L38
 Os dados de seeding são fictícios e foram gerados em https://www.4devs.com.br/
 
+As relações entre as entidades foram mapeadas conforme a seguir:
+
+![image](https://github.com/rcsim/tech-challenge/assets/30301531/2a41ba60-a282-4f55-9f4b-0e81d0c9bfc1)
+
+
 ### 2- Documentação API
 
 Opção 1: 
