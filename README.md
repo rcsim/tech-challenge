@@ -65,361 +65,233 @@ docker-compose up -d
 
 ![image](https://github.com/rcsim/tech-challenge/assets/30301531/4d4e76fe-c1eb-40f9-afd9-7b71e9a3bc99)
 
+**Banco de Dados**
+
+Ao utilizarmos um container para o PostgreSQL, foi necessário a criação de dois arquivos, uma para configuração do schema e outro para seed de alguns dados para facilitar os testes:
+https://github.com/rcsim/tech-challenge/blob/7eda16eec709df6d1ad3b58cea2d7e4788a03ff4/01-schema.sql#L1-L48
+
+https://github.com/rcsim/tech-challenge/blob/7eda16eec709df6d1ad3b58cea2d7e4788a03ff4/02-seed.sql#L1-L38
+Os dados de seeding são fictícios e foram gerados em https://www.4devs.com.br/
 
 
 ### 2- Documentação API
+#### ---- INSTÂNCIA DE ENTIDADES PARA BD EM MEMÓRIA ----
 
-# Pos-Tech API
+<img src = "./image/createdTable.png" />
 
-This is the documentation for the Pos-Tech API version 2.00.
+<img src = "./image/createdTable_H2console.png" />
 
-## Endpoints
 
-### Dependent
+#### ---- DEPENDENTES ----
 
-#### Get Dependent by ID
+URL: http://localhost:8080/dependent
 
-<<<<<<< HEAD
-=======
-- **Endpoint**: `/dependent/{id}`
-- **Method**: GET
-- **Description**: Retrieves a dependent by ID from the database.
-- **Response**:
-  - 200: Returns the dependent corresponding to the provided ID and registered in the system.
-  - 404: Dependent not found.
-
-#### Update Dependent
 
 - **Endpoint**: `/dependent/{id}`
-- **Method**: PUT
-- **Description**: Updates the registration of a dependent in the database. All parameters are mandatory.
-- **Request Body**: Dependent data in JSON format.
-- **Response**:
-  - 200: Dependent updated.
-  - 422: Parameter cannot be null.
-  - 400: Incorrect request.
-  - 404: Dependent not found.
->>>>>>> 2174433 (Atualizado documentação da API)
-
-#### Remove Dependent
-
-<<<<<<< HEAD
+- **Método**: DELETE
+- **Descrição**: Remove um dependente do banco de dados.
+- **Resposta**:
+  - 200: Dependente removido com sucesso.
+  - 404: Dependente não encontrado.
 <img src = "./image/deleteDependentID.png" />
 
+
+- **Endpoint**: `/dependent`
+- **Método**: GET
+- **Descrição**: Recupera todos os dependentes do banco de dados.
+- **Resposta**:
+  - 200: Lista de dependentes registrados no sistema. Retorna uma lista vazia se não houver dependentes.
 <img src = "./image/getDependent.png" />
 
+
+- **Endpoint**: `/dependent/{id}`
+- **Método**: GET
+- **Descrição**: Recupera um dependente por ID do banco de dados.
+- **Resposta**:
+  - 200: Retorna o dependente correspondente ao ID fornecido e registrado no sistema.
+  - 404: Dependente não encontrado.
 <img src = "./image/getDependentId.png" />
 
+
+- **Endpoint**: `/dependent/{id}/appliances`
+- **Método**: GET
+- **Descrição**: Recupera uma lista de eletrodomésticos associados a um dependente.
+- **Resposta**:
+  - 200: Lista de eletrodomésticos registrados no sistema e associados a um dependente. Retorna uma lista vazia se não houver eletrodomésticos.
+  - 404: Dependente não encontrado.
 <img src = "./image/getDependentIDAppliances.png" />
+
+
+- **Endpoint**: `/dependent`
+- **Método**: POST
+- **Descrição**: Adiciona um dependente ao banco de dados. Todos os parâmetros são obrigatórios.
+- **Corpo da Requisição**: Dados do dependente em formato JSON.
+- **Resposta**:
+  - 201: Dependente adicionado.
+  - 422: O parâmetro não pode ser nulo.
+  - 400: Requisição incorreta.
+  - 404: Não é possível registrar em um endereço inexistente.
 
 <img src = "./image/postDependent.png" />
 
-<img src = "./image/putDependentID.png" />
-=======
+
 - **Endpoint**: `/dependent/{id}`
-- **Method**: DELETE
-- **Description**: Removes a dependent from the database.
-- **Response**:
-  - 200: Dependent deleted successfully.
-  - 404: Dependent not found.
+- **Método**: PUT
+- **Descrição**: Atualiza o registro de um dependente no banco de dados. Todos os parâmetros são obrigatórios.
+- **Corpo da Requisição**: Dados do dependente em formato JSON.
+- **Resposta**:
+  - 200: Dependente atualizado.
+  - 422: O parâmetro não pode ser nulo.
+  - 400: Requisição incorreta.
+  - 404: Dependente não encontrado.
 
-#### Get All Dependents
+<img src = "./image/putDependentID.png" />
 
-- **Endpoint**: `/dependent`
-- **Method**: GET
-- **Description**: Retrieves all dependents from the database.
-- **Response**:
-  - 200: List of dependents registered in the system. Returns an empty list if there are no dependents.
 
-#### Add Dependent
+#### ---- ENDEREÇOS ----
 
-- **Endpoint**: `/dependent`
-- **Method**: POST
-- **Description**: Adds a dependent to the database. All parameters are mandatory.
-- **Request Body**: Dependent data in JSON format.
-- **Response**:
-  - 201: Dependent added.
-  - 422: Parameter cannot be null.
-  - 400: Incorrect request.
-  - 404: Cannot register in a non-existent address.
->>>>>>> 2174433 (Atualizado documentação da API)
+URL: http://localhost:8080/address
 
-#### Get Appliances of a Dependent
 
-- **Endpoint**: `/dependent/{id}/appliances`
-- **Method**: GET
-- **Description**: Retrieves a list of appliances associated with a dependent.
-- **Response**:
-  - 200: List of appliances registered in the system and associated with a dependent. Returns an empty list if there are no appliances.
-  - 404: Dependent not found.
-
-### Appliance
-
-<<<<<<< HEAD
+- **Endpoint**: `/address/{id}`
+- **Método**: DELETE
+- **Descrição**: Remove um endereço do banco de dados.
+- **Resposta**:
+  - 200: Endereço removido com sucesso.
+  - 404: Endereço não encontrado.
 <img src = "./image/deleteAddressId.png" />
+
+- **Endpoint**: `/address`
+- **Método**: GET
+- **Descrição**: Recupera todos os endereços do banco de dados.
+- **Resposta**:
+  - 200: Lista de endereços registrados no sistema. Retorna uma lista vazia se não houver endereços.
 
 <img src = "./image/getAddress.png" />
 
+
+- **Endpoint**: `/address/{id}`
+- **Método**: GET
+- **Descrição**: Recupera um endereço por ID do banco de dados.
+- **Resposta**:
+  - 200: Retorna o endereço correspondente ao ID fornecido e registrado no sistema.
+  - 404: Endereço não encontrado.
 <img src = "./image/getAddressId.png" />
+
+
+- **Endpoint**: `/address/{id}/appliances`
+- **Método**: GET
+- **Descrição**: Recupera uma lista de eletrodomésticos associados a um endereço.
+- **Resposta**:
+  - 200: Lista de eletrodomésticos registrados no sistema e associados a um endereço. Retorna uma lista vazia se não houver eletrodomésticos.
 
 <img src = "./image/getAddressIdAppliances.png" />
 
+
+- **Endpoint**: `/address/{id}/dependent`
+- **Método**: GET
+- **Descrição**: Recupera uma lista de dependentes associados a um endereço.
+- **Resposta**:
+  - 200: Lista de dependentes registrados no sistema e associados a um endereço. Retorna uma lista vazia se não houver dependentes.
+  - 404: Endereço não encontrado.
 <img src = "./image/getAddressIdDependent.png" />
 
+
+- **Endpoint**: `/address`
+- **Método**: POST
+- **Descrição**: Adiciona um endereço ao banco de dados. Todos os parâmetros são obrigatórios.
+- **Corpo da Requisição**: Dados do endereço em formato JSON.
+- **Resposta**:
+  - 201: Endereço adicionado.
+  - 422: O parâmetro não pode ser nulo.
+  - 400: Requisição incorreta.
 <img src = "./image/postAddress.png" />
 
+
+- **Endpoint**: `/address/{id}`
+- **Método**: PUT
+- **Descrição**: Atualiza o registro de um endereço no banco de dados. Todos os parâmetros são obrigatórios.
+- **Corpo da Requisição**: Dados do endereço em formato JSON.
+- **Resposta**:
+  - 200: Endereço atualizado.
+  - 422: O parâmetro não pode ser nulo.
+  - 404: Endereço não encontrado.
+  - 400: Requisição incorreta.
 <img src = "./image/putAddressId.png" />
-=======
-#### Get Appliance by ID
+
+
+#### ---- ELETRODOMÉSTICOS ----
+
+URL: http://localhost:8080/appliance
 
 - **Endpoint**: `/appliance/{id}`
-- **Method**: GET
-- **Description**: Retrieves an appliance by ID from the database.
-- **Response**:
-  - 200: Returns the appliance corresponding to the provided ID and registered in the system.
-  - 404: Appliance not found.
-
-#### Update Appliance
-
-- **Endpoint**: `/appliance/{id}`
-- **Method**: PUT
-- **Description**: Updates the registration of an appliance in the database. All parameters are mandatory.
-- **Request Body**: Appliance data in JSON format.
-- **Response**:
-  - 200: Appliance updated.
-  - 422: Parameter cannot be null.
-  - 404: Appliance not found.
-  - 400: Incorrect request.
-
-#### Remove Appliance
-
-- **Endpoint**: `/appliance/{id}`
-- **Method**: DELETE
-- **Description**: Removes an appliance from the database.
-- **Response**:
-  - 200: Appliance deleted successfully.
-  - 404: Appliance not found.
-
-#### Get
-
- All Appliances
->>>>>>> 2174433 (Atualizado documentação da API)
-
-- **Endpoint**: `/appliance`
-- **Method**: GET
-- **Description**: Retrieves all appliances from the database.
-- **Response**:
-  - 200: List of appliances registered in the system. Returns an empty list if there are no appliances.
-
-#### Add Appliance
-
-- **Endpoint**: `/appliance`
-- **Method**: POST
-- **Description**: Adds an appliance to the database. All parameters are mandatory.
-- **Request Body**: Appliance data in JSON format.
-- **Response**:
-  - 201: Appliance added.
-  - 422: Parameter cannot be null.
-  - 400: Incorrect request.
-  - 404: Cannot register in a non-existent address.
-
-<<<<<<< HEAD
+- **Método**: DELETE
+- **Descrição**: Remove um eletrodoméstico do banco de dados.
+- **Resposta**:
+  - 200: Eletrodoméstico removido com sucesso.
+  - 404: Eletrodoméstico não encontrado.
 
 <img src = "./image/deleteApplianceID.png" />
 
+
+- **Endpoint**: `/appliance`
+- **Método**: GET
+- **Descrição**: Recupera todos os eletrodomésticos do banco de dados.
+- **Resposta**:
+  - 200: Lista de eletrodomésticos registrados no sistema. Retorna uma lista vazia se não houver eletrodomésticos.
+
 <img src = "./image/getAppliance.png" />
 
+
+- **Endpoint**: `/appliance/{id}`
+- **Método**: GET
+- **Descrição**: Recupera um eletrodoméstico por ID do banco de dados.
+- **Resposta**:
+  - 200: Retorna o eletrodoméstico correspondente ao ID fornecido e registrado no sistema.
+  - 404: Eletrodoméstico não encontrado.
 <img src = "./image/getApplianceID.png" />
+
+- **Endpoint**: `/appliance/{id}/dependent`
+- **Método**: GET
+- **Descrição**: Recupera uma lista de dependentes associados a um eletrodoméstico.
+- **Resposta**:
+  - 200: Lista de dependentes registrados no sistema e associados a um eletrodoméstico. Retorna uma lista vazia se não houver dependentes.
+  - 404: Eletrodoméstico não encontrado.
 
 <img src = "./image/getApplianceDepedent.png" />
 
+
+- **Endpoint**: `/appliance`
+- **Método**: POST
+- **Descrição**: Adiciona um eletrodoméstico ao banco de dados. Todos os parâmetros são obrigatórios.
+- **Corpo da Requisição**: Dados do eletrodoméstico em formato JSON.
+- **Resposta**:
+  - 201: Eletrodoméstico adicionado.
+  - 422: O parâmetro não pode ser nulo.
+  - 400: Requisição incorreta.
+  - 404: Não é possível registrar em um endereço inexistente.
+
 <img src = "./image/postAppliance.png" />
 
+
+- **Endpoint**: `/appliance/{id}`
+- **Método**: PUT
+- **Descrição**: Atualiza o registro de um eletrodoméstico no banco de dados. Todos os parâmetros são obrigatórios.
+- **Corpo da Requisição**: Dados do eletrodoméstico em formato JSON.
+- **Resposta**:
+  - 200: Eletrodoméstico atualizado.
+  - 422: O parâmetro não pode ser nulo.
+  - 404: Eletrodoméstico não encontrado.
+  - 400: Requisição incorreta.
 <img src = "./image/putApplianceID.png" />
 
-=======
-#### Get Dependents of an Appliance
 
-- **Endpoint**: `/appliance/{id}/dependents`
-- **Method**: GET
-- **Description**: Retrieves a list of dependents associated with an appliance.
-- **Response**:
-  - 200: List of dependents registered in the system and associated with an appliance. Returns an empty list if there are no dependents.
-  - 404: Appliance not found.
 
-### Address
 
-#### Get Address by ID
 
-- **Endpoint**: `/address/{id}`
-- **Method**: GET
-- **Description**: Retrieves an address by ID from the database.
-- **Response**:
-  - 200: Returns the address corresponding to the provided ID and registered in the system.
-  - 404: Address not found.
 
-#### Update Address
 
-- **Endpoint**: `/address/{id}`
-- **Method**: PUT
-- **Description**: Updates the registration of an address in the database. All parameters are mandatory.
-- **Request Body**: Address data in JSON format.
-- **Response**:
-  - 200: Address updated.
-  - 422: Parameter cannot be null.
-  - 404: Address not found.
-  - 400: Incorrect request.
 
-#### Remove Address
->>>>>>> 2174433 (Atualizado documentação da API)
 
-- **Endpoint**: `/address/{id}`
-- **Method**: DELETE
-- **Description**: Removes an address from the database.
-- **Response**:
-  - 200: Address deleted successfully.
-  - 404: Address not found.
 
-#### Get All Addresses
 
-- **Endpoint**: `/address`
-- **Method**: GET
-- **Description**: Retrieves all addresses from the database.
-- **Response**:
-  - 200: List of addresses registered in the system. Returns an empty list if there are no addresses.
-
-#### Add Address
-
-- **Endpoint**: `/address`
-- **Method**: POST
-- **Description**: Adds an address to the database. All parameters are mandatory.
-- **Request Body**: Address data in JSON format.
-- **Response**:
-  - 201: Address added.
-  - 422: Parameter cannot be null.
-  - 400: Incorrect request.
-
-#### Get Dependents of an Address
-
-- **Endpoint**: `/address/{id}/dependents`
-- **Method**: GET
-- **Description**: Retrieves a list of dependents associated with an address.
-- **Response**:
-  - 200: List of dependents registered in the system and associated with an address. Returns an empty list if there are no dependents.
-  - 404: Address not found.
-
-#### Get Appliances of an Address
-
-- **Endpoint**: `/address/{id}/appliances`
-- **Method**: GET
-- **Description**: Retrieves a list of appliances associated with an address.
-- **Response**:
-  - 200: List of appliances registered in the system and associated with an address. Returns an empty list if there are no appliances.
-  - 404: Address not found.
-
-## Data Models
-
-### DependentDTO
-
-- **Required Fields**: addressId, dateOfBirth, gender, name, parentage, userId
-- **Properties**:
-  - id (integer, format: int64)
-  - name (string)
-  - dateOfBirth (string, format: date)
-  - gender (string)
-  - parentage (string)
-  - addressId (integer, format: int64)
-  - userId (integer, format: int64)
-
-### ApplianceDTO
-
-- **Required Fields**: addressId, manufacturer, model, name, power, userId
-- **Properties**:
-  - id (integer, format: int64)
-  - name (string)
-  - model (string)
-  - power (string)
-  - manufacturer (string)
-  - addressId (integer, format: int64)
-  - userId (integer, format: int64)
-
-### AddressDTO
-
-- **Required Fields**: city, district, number, state, street, userId
-- **Properties**:
-  - id (integer, format: int64)
-  - street (string)
-  - number (string)
-  - district (string)
-  - city (string)
-  - state (string)
-  - userId (integer, format: int64)
-
-### Pageable
-
-- **Properties**:
-  - page (integer, minimum: 0, format: int32)
-  - size (integer, minimum: 1, format: int32)
-  - sort (array of strings)
-
-### PageDependentDTO
-
-- **Properties**:
-  - totalElements (integer, format: int64)
-  - totalPages (integer, format: int32)
-  - size (integer, format: int32)
-  - content (array of DependentDTO)
-  - number (integer, format: int32)
-  - sort (reference to SortObject)
-  - first (boolean)
-  - last (boolean)
-  - numberOfElements (integer, format: int32)
-  - pageable (reference to PageableObject)
-  - empty (boolean)
-
-### PageableObject
-
-- **Properties**:
-  - offset (integer, format: int64)
-  - sort (reference to SortObject)
-  - pageNumber (integer, format: int32)
-  - pageSize (integer, format: int32)
-  - unpaged (boolean)
-  - paged (boolean)
-
-### SortObject
-
-- **Properties**:
-  - empty (boolean)
-  - sorted (boolean)
-  - unsorted (boolean)
-
-### PageApplianceDTO
-
-- **Properties**:
-  - totalElements (integer, format: int64)
-  - totalPages (integer, format: int32)
-  - size (integer, format: int32)
-  - content (array of ApplianceDTO)
-  - number (integer, format: int32)
-  - sort (reference to SortObject)
-  - first (boolean)
-  - last (boolean)
-  - numberOfElements (integer, format: int32)
-  - pageable (reference to PageableObject)
-  - empty (boolean)
-
-### PageAddressDTO
-
-- **Properties**:
-  - totalElements (integer, format: int64)
-  - totalPages (integer, format: int32)
-  - size (integer, format: int32)
-  - content (array of AddressDTO)
-  - number (integer, format: int32)
-  - sort (reference to SortObject)
-  - first (boolean)
-  - last (boolean)
-  - numberOfElements (integer, format: int32)
-  - pageable (reference to PageableObject)
-  - empty (boolean)
