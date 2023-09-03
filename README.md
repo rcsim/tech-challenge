@@ -188,7 +188,7 @@ URL: http://localhost:8080/address
 <img src = "./image/getAddressIdAppliances.png" />
 
 
-- **Endpoint**: `/address/{id}/dependent`
+- **Endpoint**: `/address/{id}/dependents`
 - **Método**: GET
 - **Descrição**: Recupera uma lista de dependentes associados a um endereço.
 - **Resposta**:
