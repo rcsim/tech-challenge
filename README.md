@@ -74,7 +74,8 @@ Os dados de seeding são fictícios e foram gerados em https://www.4devs.com.br/
 
 As relações entre as entidades foram mapeadas conforme a seguir:
 
-![image](https://github.com/rcsim/tech-challenge/assets/30301531/2a41ba60-a282-4f55-9f4b-0e81d0c9bfc1)
+![image](https://github.com/rcsim/tech-challenge/assets/30301531/e5eb0b13-ca93-4a1b-acf1-c8b3aa5208b5)
+
 
 
 ### 2- Documentação API
