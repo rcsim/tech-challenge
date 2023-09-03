@@ -37,93 +37,57 @@ A principal dificultade encontrada foi a necessidade de se realizar algumas refa
 
 URL: http://localhost:8080/dependent
 
-Pessoas relacionadas ao nosso cliente, com algum nível de parentesco.
-
-- Json da classe de Dependentes para o Postman com todos os campos preenchidos. 
-```json
-{
-    "name":"Victor",
-    "dateOfBirth":"28/12/1998",
-    "gender":"Masculino",
-    "parentage":"Teste"
-}
-```
-- Resposta da requisição
-![image](https://github.com/rcsim/tech-challenge/assets/71778151/4da03697-9013-4135-a471-758a1a057947)
-
-- Dados inseridos no banco
-<img src = "image/createdDependent_BD.png" />
 
 
-- Json da classe de Dependentes para o Postman com todos os campos nulos. 
+<img src = "./image/deleteDependentID.png" />
 
-![image](https://github.com/rcsim/tech-challenge/assets/71778151/895ef567-ca60-4cdf-b496-415dcae26a58)
+<img src = "./image/getDependent.png" />
 
-- Json da classe de Dependentes para o Postman com todos os campos vazios. 
+<img src = "./image/getDependentId.png" />
 
-![image](https://github.com/rcsim/tech-challenge/assets/71778151/6fb2c201-9f1f-41d2-8d81-4f59f736c294)
+<img src = "./image/getDependentIDAppliances.png" />
 
+<img src = "./image/postDependent.png" />
+
+<img src = "./image/putDependentID.png" />
 
 
 #### ---- ENDEREÇOS ----
 
 URL: http://localhost:8080/address
 
-- Json da classe de Endereços para o Postman com todos os campos preenchidos.
+<img src = "./image/deleteAddressId.png" />
 
-```json
-{
-  "street":"Avenida Augusto de Lima",
-  "number":"486",
-  "district":"Centro",
-  "city":"Belo Horizonte",
-  "estate":"Minas Gerais"
-}
+<img src = "./image/getAddress.png" />
 
-```
-- Resposta da requisição
-<img src = "image/createdAddressPostman_status201.png" />
+<img src = "./image/getAddressId.png" />
 
-- Dados inseridos no banco
-<img src = "image/createdAddress_BD.png" />
+<img src = "./image/getAddressIdAppliances.png" />
 
+<img src = "./image/getAddressIdDependent.png" />
 
-- Json da classe de Endereços para o Postman com todos os campos nulos.
-<img src = "image/addressError_Nulo.png" />
+<img src = "./image/postAddress.png" />
 
-- Json da classe de Endereços para o Postman com todos os campos vazios.
-<img src = "image/addressError_Vazio.png" />
-
+<img src = "./image/putAddressId.png" />
 
 
 #### ---- ELETRODOMÉSTICOS ----
 
 URL: http://localhost:8080/appliance
 
-- Json da classe de Eletrodomésticos para o Postman com todos os campos preenchidos. 
 
-```json
-{
-  "name":"HP",
-  "model":"G42",
-  "power":"90w",
-  "manufacturer":"Hewlett-Packard"
-}
+<img src = "./image/deleteApplianceID.png" />
 
-```
-- Resposta da requisição
-<img src = "image/createdApplience_Postman_status201.png" />
+<img src = "./image/getAppliance.png" />
 
-- Dados inseridos no banco
-<img src = "image/createdApplience_BD.png" />
+<img src = "./image/getApplianceID.png" />
 
+<img src = "./image/getApplianceDepedent.png" />
 
-- Json da classe de Eletrodomésticos para o Postman com todos os campos nulos.
-<img src = "image/applienceError_Nulo.png" />
+<img src = "./image/postAppliance.png" />
 
+<img src = "./image/putApplianceID.png" />
 
-- Json da classe de Eletrodomésticos para o Postman com todos os campos vazios.
-<img src = "image/applienceError_Vazio.png" />
 
 
 
